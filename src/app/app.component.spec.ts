@@ -1,9 +1,13 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { expect} from 'chai'; 
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let nativeElement: HTMLElement;
+  let appComponent :AppComponent;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -15,22 +19,22 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    nativeElement = fixture.debugElement.nativeElement;
+    appComponent = fixture.debugElement.componentInstance;
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).to.exist;
+    expect(appComponent).to.exist;
   });
 
   it(`should have as title 'lestes-gaming'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).to.equal('lestes-gaming');
+    expect(appComponent.title).to.equal('lestes-gaming');
   });
 
   it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).to.contain('Welcome to lestes-gaming!');
+    expect(nativeElement.querySelector('h1').textContent).to.contain('Welcome to lestes-gaming!');
   });
 });
