@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-chai'),
       require('karma-chrome-launcher'),
       require('karma-coverage-istanbul-reporter'),
+      require('karma-mocha-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -20,7 +21,7 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'mocha'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
