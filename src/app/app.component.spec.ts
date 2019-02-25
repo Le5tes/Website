@@ -2,6 +2,7 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { expect} from 'chai'; 
+import { MatToolbarModule } from '@angular/material';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -11,7 +12,8 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatToolbarModule
       ],
       declarations: [
         AppComponent
@@ -33,8 +35,16 @@ describe('AppComponent', () => {
     expect(appComponent.title).to.equal('lestes-gaming');
   });
 
-  it('should render title in a h1 tag', () => {
-    fixture.detectChanges();
-    expect(nativeElement.querySelector('h1').textContent).to.contain('Welcome to lestes-gaming!');
+
+  describe('menu', () => {
+    it('should exist', () => {
+      expect(nativeElement.querySelector('[data-qa="main-menu"]')).to.exist;
+    })
+
+    
+    it('should render title in a h1 tag', () => {
+      fixture.detectChanges();
+      expect(nativeElement.querySelector('h1').textContent).to.contain('Welcome to lestes-gaming!');
+    });
   });
 });
