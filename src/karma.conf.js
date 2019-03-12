@@ -18,15 +18,25 @@ module.exports = function (config) {
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../coverage/lestes-gaming'),
-      reports: ['html', 'lcovonly', 'text-summary'],
+      reports: ['lcov', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'mocha'],
+    reporters: [ 'mocha'],
     port: 9876,
+    mochaReporter: {
+      colors: {
+        success: 'green',
+        info: 'blue',
+        warning: 'cyan',
+        error: 'bgRed'
+      },
+      output: 'autowatch',
+      maxLogLines: -1
+    },
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   });
 };
