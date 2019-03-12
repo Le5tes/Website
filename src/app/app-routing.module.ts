@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GamesComponent } from '../pages/games/components/games/games.component';
+import { LandingComponent } from '../pages/landing/components/landing/landing.component';
 
-const routes: Routes = [];
+export const routes: Routes = [
+  {path: '', component: LandingComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
