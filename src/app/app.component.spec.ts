@@ -6,6 +6,7 @@ import { expect} from 'chai';
 import { MatToolbarModule } from '@angular/material';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { byDataQa } from 'src/test-utils/test-helpers';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -49,12 +50,24 @@ describe('AppComponent', () => {
 
   describe('menu', () => {
     it('should exist', () => {
-      expect(nativeElement.querySelector('[data-qa="main-menu"]')).to.exist;
+      expect(getElementByDataQa('main-menu')).to.exist;
     })
     
     it('should render title in a h1 tag', () => {
       fixture.detectChanges();
       expect(nativeElement.querySelector('h1').textContent).to.contain('Welcome to lestes-gaming!');
     });
+
+    describe('navigation buttons', () => {
+      describe('games', () => {
+        it('should exist', () => {
+          expect(getElementByDataQa('games-header-button')).to.exist;
+        })
+      })
+    })
   });
+
+  const getElementByDataQa = (dataQa: string) => {
+    return nativeElement.querySelector(byDataQa(dataQa));
+  }
 });
