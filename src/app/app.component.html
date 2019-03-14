@@ -4,7 +4,7 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <button data-qa="games-header-button">Games</button>
+  <button data-qa="games-header-button" (click)="navigateTo('games')">Games</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { routes } from './app-routing.module'; 
@@ -6,7 +6,9 @@ import { expect} from 'chai';
 import { MatToolbarModule } from '@angular/material';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { byDataQa } from 'src/test-utils/test-helpers';
+import { byDataQa } from '../test-utils/test-helpers';
+import { GamesModule } from 'src/pages/games/games.module';
+import { LandingModule } from 'src/pages/landing/landing.module';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -18,18 +20,21 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
-        MatToolbarModule
+        RouterTestingModule.withRoutes(routes),
+        MatToolbarModule,
+        GamesModule,
+        LandingModule
       ],
       declarations: [
         AppComponent
-      ],
+      ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     router = TestBed.get(Router);
     location = TestBed.get(Location);
+    
     fixture = TestBed.createComponent(AppComponent);
     nativeElement = fixture.debugElement.nativeElement;
     appComponent = fixture.debugElement.componentInstance;
@@ -51,7 +56,7 @@ describe('AppComponent', () => {
   describe('menu', () => {
     it('should exist', () => {
       expect(getElementByDataQa('main-menu')).to.exist;
-    })
+    });
     
     it('should render title in a h1 tag', () => {
       fixture.detectChanges();
@@ -62,12 +67,19 @@ describe('AppComponent', () => {
       describe('games', () => {
         it('should exist', () => {
           expect(getElementByDataQa('games-header-button')).to.exist;
-        })
-      })
-    })
+        });
+
+        it('should navigate to the games page', fakeAsync(() => {
+          getElementByDataQa('games-header-button').click();
+          tick()
+          
+          expect(location.path()).to.equal('/games')
+        }));
+      });
+    });
   });
 
   const getElementByDataQa = (dataQa: string) => {
-    return nativeElement.querySelector(byDataQa(dataQa));
+    return nativeElement.querySelector(byDataQa(dataQa)) as any;
   }
 });
