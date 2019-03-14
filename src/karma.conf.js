@@ -31,7 +31,7 @@ module.exports = function (config) {
         error: 'bgRed'
       },
       output: 'autowatch',
-      maxLogLines: -1
+      maxLogLines: 10
     },
     colors: true,
     logLevel: config.LOG_INFO,
