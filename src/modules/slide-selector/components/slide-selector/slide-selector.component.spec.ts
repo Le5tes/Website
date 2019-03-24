@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { expect } from 'chai';
 
 import { SlideSelectorComponent } from './slide-selector.component';
 
@@ -20,6 +21,6 @@ describe('SlideSelectorComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).to.exist;
   });
 });
