@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 import { byDataQa } from '../test-utils/test-helpers';
 import { GamesModule } from 'src/pages/games/games.module';
 import { LandingModule } from 'src/pages/landing/landing.module';
+import { AboutModule } from 'src/pages/about/about.module';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -23,7 +24,8 @@ describe('AppComponent', () => {
         RouterTestingModule.withRoutes(routes),
         MatToolbarModule,
         GamesModule,
-        LandingModule
+        LandingModule,
+        AboutModule
       ],
       declarations: [
         AppComponent
@@ -74,6 +76,19 @@ describe('AppComponent', () => {
           tick()
           
           expect(location.path()).to.equal('/games')
+        }));
+      });
+
+      describe('about', () => {
+        it('should exist', () => {
+          expect(getElementByDataQa('about-header-button')).to.exist;
+        });
+
+        it('should navigate to the games page', fakeAsync(() => {
+          getElementByDataQa('about-header-button').click();
+          tick()
+          
+          expect(location.path()).to.equal('/about')
         }));
       });
     });
