@@ -11,7 +11,7 @@ class WrapperComponent {
     @ViewChild(SlideSelectorComponent)
     public child: SlideSelectorComponent;
 
-    public items;
+    public items = [ {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}];
 }
 
 describe('slide-selector-component integration', () => {
@@ -45,8 +45,6 @@ beforeEach(async(() => {
   describe('showing content', () => {
     context('when passed three or less items', () => {
       it('should display the items\' images', () => {
-        wrapper.items = [ {name: 'myItem', largeThumbnail: 'url/url'}]
-        fixture.detectChanges();
         expect(nativeElement.querySelector('img[src="url/url"]')).to.exist;
       });
     });

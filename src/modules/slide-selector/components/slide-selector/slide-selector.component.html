@@ -1,5 +1,11 @@
-<ul >
-<li *ngFor="let item of items">
-  <img src={{item.largeThumbnail}}>
-</li>
+<ul *ngIf="currentItem">
+  <li>
+    <img src={{previousItem.largeThumbnail}}>
+  </li>
+  <li>
+    <img src={{currentItem.largeThumbnail}}>
+  </li>
+  <li>
+    <img src={{nextItem.largeThumbnail}}>
+  </li>
 </ul>

@@ -7,10 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SlideSelectorComponent implements OnInit {
   @Input()
-  public items;
+  public items = [];
+
+  private itemsPosition = 1;
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  private get currentItem() { return this.items[this.itemsPosition]; }
+  private get previousItem() { return this.items[this.itemsPosition - 1]; }
+  private get nextItem() { return this.items[this.itemsPosition + 1]; }
 }

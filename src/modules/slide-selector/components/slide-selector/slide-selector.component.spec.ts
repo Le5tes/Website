@@ -33,4 +33,10 @@ describe('SlideSelectorComponent', () => {
     expect(nativeElement.querySelector('img[src="url/url2"]')).to.exist;
     expect(nativeElement.querySelector('img[src="url/url3"]')).to.exist;
   })
+
+  it('should not display the fourth item passed in', () => {
+    component.items = [ {name: 'myItem', largeThumbnail: 'url/url'},{name: 'myItem2', largeThumbnail: 'url/url2'},{name: 'myItem3', largeThumbnail: 'url/url3'},{name: 'myItem4', largeThumbnail: 'url/url4'}]
+    fixture.detectChanges();
+    expect(nativeElement.querySelector('img[src="url/url4"]')).not.to.exist;
+  })
 });
