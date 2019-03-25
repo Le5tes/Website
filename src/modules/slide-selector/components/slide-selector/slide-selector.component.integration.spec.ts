@@ -5,18 +5,20 @@ import { SlideSelectorComponent } from './slide-selector.component';
 import { Component, ViewChild } from '@angular/core';
 
 @Component({
-   template: '<app-slide-selector></app-slide-selector>'
+   template: '<app-slide-selector [items]="items"></app-slide-selector>'
 })
 class WrapperComponent {
     @ViewChild(SlideSelectorComponent)
     public child: SlideSelectorComponent;
+
+    public items;
 }
 
 describe('slide-selector-component integration', () => {
 let fixture: ComponentFixture<WrapperComponent>;
 let wrapper: WrapperComponent; 
 let component: SlideSelectorComponent; 
-
+let nativeElement: HTMLElement;
 
 beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -32,11 +34,21 @@ beforeEach(async(() => {
     fixture = TestBed.createComponent(WrapperComponent);
     wrapper = fixture.componentInstance;
     component = wrapper.child;
+    nativeElement = fixture.nativeElement;
     fixture.detectChanges();
   });
 
   it('should be accessable', () => {
     expect(component).to.exist;
-  })
+  });
 
+  describe('showing content', () => {
+    context('when passed three or less items', () => {
+      it('should display the items\' images', () => {
+        wrapper.items = [ {name: 'myItem', largeThumbnail: 'url/url'}]
+        fixture.detectChanges();
+        expect(nativeElement.querySelector('img[src="url/url"]')).to.exist;
+      });
+    });
+  });
 });
