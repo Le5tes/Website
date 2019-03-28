@@ -1,11 +1,11 @@
 <ul *ngIf="currentItem">
-  <li>
-    <img src={{previousItem.largeThumbnail}}>
+  <li data-qa="previous-item" (click)="scrollBackward()">
+    <img src={{getImage(previousItem)}}>
   </li>
   <li>
-    <img src={{currentItem.largeThumbnail}}>
+    <img src={{getImage(currentItem)}}>
   </li>
-  <li>
-    <img src={{nextItem.largeThumbnail}}>
+  <li data-qa="next-item" (click)="scrollForward()">
+    <img src={{getImage(nextItem)}}>
   </li>
 </ul>

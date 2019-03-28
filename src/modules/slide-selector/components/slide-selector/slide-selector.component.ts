@@ -16,7 +16,22 @@ export class SlideSelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  private get currentItem() { return this.items[this.itemsPosition]; }
-  private get previousItem() { return this.items[this.itemsPosition - 1]; }
-  private get nextItem() { return this.items[this.itemsPosition + 1]; }
+  public getImage(item) {
+    return item? item.largeThumbnail : undefined
+  }
+
+  public scrollForward() {
+    this.itemsPosition = this.nextItemPosition;
+  }
+
+  public scrollBackward() {
+    this.itemsPosition  = this.previousItemPosition;
+  }
+
+  public get currentItem() { return this.items[this.itemsPosition]; }
+  public get previousItem() { return this.items[this.previousItemPosition]; }
+  public get nextItem() { return this.items[this.nextItemPosition]; }
+
+  private get previousItemPosition () { return this.itemsPosition === 0 ? this.items.length -1 : this.itemsPosition - 1; }
+  private get nextItemPosition () { return this.itemsPosition + 1 === this.items.length ? 0 : this.itemsPosition + 1; }
 }
