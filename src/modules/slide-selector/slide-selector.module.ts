@@ -6,6 +6,7 @@ import { SlideSelectorComponent } from './components/slide-selector/slide-select
   declarations: [SlideSelectorComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [SlideSelectorComponent]
 })
 export class SlideSelectorModule { }

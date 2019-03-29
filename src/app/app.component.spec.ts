@@ -10,6 +10,7 @@ import { byDataQa } from '../test-utils/test-helpers';
 import { GamesModule } from 'src/pages/games/games.module';
 import { LandingModule } from 'src/pages/landing/landing.module';
 import { AboutModule } from 'src/pages/about/about.module';
+import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -25,6 +26,7 @@ describe('AppComponent', () => {
         MatToolbarModule,
         GamesModule,
         LandingModule,
+        SlideSelectorModule,
         AboutModule
       ],
       declarations: [

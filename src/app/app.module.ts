@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material';
 import { LandingModule } from 'src/pages/landing/landing.module';
 import { GamesModule } from 'src/pages/games/games.module';
 import { AboutModule } from 'src/pages/about/about.module';
+import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AboutModule } from 'src/pages/about/about.module';
     MatToolbarModule, 
     LandingModule,
     GamesModule,
+    SlideSelectorModule,
     AboutModule
   ],
   providers: [],

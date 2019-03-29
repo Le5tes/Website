@@ -64,7 +64,7 @@ describe('SlideSelectorComponent', () => {
     });
 
     context('when the next item is clicked', () => {
-      it('should scroll such that the fourth item is shown and the first item is not', () => {
+      it('should scroll such that the next item is shown and the first item is not', () => {
         getElementByDataQa('next-item').click();
         fixture.detectChanges();
 
@@ -85,7 +85,20 @@ describe('SlideSelectorComponent', () => {
     });
 
     context('when the previous item is clicked', () => {
-      it('should scroll such that the third item is not shown and the last item wraps around', () => {
+      it('should scroll such that the previous item is shown and the last item shown is no longer shown', () => {
+        component.scrollForward();
+        fixture.detectChanges();
+        expect(nativeElement.querySelector('img[src="url/url"]')).not.to.exist;
+        expect(nativeElement.querySelector('img[src="url/url4"]')).to.exist;
+
+        getElementByDataQa('previous-item').click();
+        fixture.detectChanges();
+
+        expect(nativeElement.querySelector('img[src="url/url"]')).to.exist;
+        expect(nativeElement.querySelector('img[src="url/url4"]')).not.to.exist;
+      })
+
+      it('should wrap around to show the last item if it passes the first', () => {
         getElementByDataQa('previous-item').click();
         fixture.detectChanges();
 
