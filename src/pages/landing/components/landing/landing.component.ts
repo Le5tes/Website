@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from 'src/data-services/games/games.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(public gamesService: GamesService) { }
 
   ngOnInit() {
   }
+
+  public get games() { return this.gamesService.games}
 
 }

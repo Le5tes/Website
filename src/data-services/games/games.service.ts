@@ -5,7 +5,7 @@ const CAT_IMAGE = 'https://www.cats.org.uk/uploads/branches/231/Kit/Boba_red_sof
 @Injectable({
   providedIn: 'root'
 })
-export class GamesServiceService {
+export class GamesService {
   private _games: Game[];
   
   constructor() {

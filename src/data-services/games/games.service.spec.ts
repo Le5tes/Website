@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
 
-import { GamesServiceService } from './games-service.service';
+import { GamesService } from './games.service';
 
 describe('GamesServiceService', () => {
-  let service: GamesServiceService;
+  let service: GamesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
 
-    service = TestBed.get(GamesServiceService);
+    service = TestBed.get(GamesService);
   });
 
   it('should be created', () => {
