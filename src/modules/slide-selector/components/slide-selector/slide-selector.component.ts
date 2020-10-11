@@ -17,7 +17,7 @@ export class SlideSelectorComponent implements OnInit {
   }
 
   public getImage(item) {
-    return item? item.largeThumbnail : undefined
+    return item? item.largeThumbnail : undefined;
   }
 
   public scrollForward() {

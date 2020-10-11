@@ -8,7 +8,7 @@ import { Component, ViewChild } from '@angular/core';
    template: '<app-slide-selector [items]="items"></app-slide-selector>'
 })
 class WrapperComponent {
-    @ViewChild(SlideSelectorComponent)
+    @ViewChild(SlideSelectorComponent, /* TODO: add static flag */ {})
     public child: SlideSelectorComponent;
 
     public items = [ {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}];

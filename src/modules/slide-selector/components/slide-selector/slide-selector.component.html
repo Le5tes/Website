@@ -1,11 +1,11 @@
 <ul *ngIf="currentItem" class="slide-list">
   <li data-qa="previous-item" class="list-item" (click)="scrollBackward()">
-    <img src={{getImage(previousItem)}}>
+    <img class="item-large-thumbnail" src={{getImage(previousItem)}}>
   </li>
   <li class="list-item">
-    <img src={{getImage(currentItem)}}>
+    <img class="item-large-thumbnail" src={{getImage(currentItem)}}>
   </li>
   <li data-qa="next-item" class="list-item" (click)="scrollForward()">
-    <img src={{getImage(nextItem)}}>
+    <img class="item-large-thumbnail" src={{getImage(nextItem)}}>
   </li>
 </ul>
