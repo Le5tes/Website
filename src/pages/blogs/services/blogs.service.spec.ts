@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { BlogService } from './blog.service';
+import { BlogsService } from './blogs.service';
 
 describe('BlogService', () => {
-  let service: BlogService;
+  let service: BlogsService;
   let expect;
 
   before(() => {
@@ -14,8 +15,10 @@ describe('BlogService', () => {
   });
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(BlogService);
+    TestBed.configureTestingModule({ 
+      imports: [HttpClientTestingModule],
+    });
+    service = TestBed.inject(BlogsService);
   });
 
   it('should be created', () => {

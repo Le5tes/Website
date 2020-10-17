@@ -8,7 +8,7 @@ import { Component, ViewChild } from '@angular/core';
    template: '<app-slide-selector [items]="items"></app-slide-selector>'
 })
 class WrapperComponent {
-    @ViewChild(SlideSelectorComponent, /* TODO: add static flag */ {})
+    @ViewChild(SlideSelectorComponent)
     public child: SlideSelectorComponent;
 
     public items = [ {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}];
@@ -33,9 +33,9 @@ beforeEach(async(() => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WrapperComponent);
     wrapper = fixture.componentInstance;
-    component = wrapper.child;
     nativeElement = fixture.nativeElement;
     fixture.detectChanges();
+    component = wrapper.child;
   });
 
   it('should be accessable', () => {

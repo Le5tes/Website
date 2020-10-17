@@ -1,31 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import * as chai from 'chai';
-import * as sinon from 'sinon';
-import * as sinonChai from 'sinon-chai';
+import { expect } from 'chai';
 
 import { BlogComponent } from './blog.component';
+import { byDataQa } from 'src/test-utils/test-helpers';
 
 describe('BlogComponent', () => {
-  let expect;
   let component: BlogComponent;
   let fixture: ComponentFixture<BlogComponent>;
-  let stubGetBlogs;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
+  let nativeElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ BlogComponent ]
-    });
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BlogComponent);
     component = fixture.componentInstance;
-    stubGetBlogs = sinon.stub(component.blogService, 'getBlogs');
+    component.blog = getBlog();
+    nativeElement = fixture.nativeElement;
     fixture.detectChanges();
   });
 
@@ -33,9 +28,15 @@ describe('BlogComponent', () => {
     expect(component).to.exist;
   });
 
-  context('on init', () => {
-    it('should make a call to get the latest blog posts', () => {
-      expect(stubGetBlogs).to.have.been.called;
-    });
+  it('should show the body with the value passed in', () => {
+    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.equal(getBlog().body);
   });
+
+  const getBlog = () => {
+    return {
+      username: 'Tim',
+      body: 'BODY',
+      createdAt: new Date(2020,0,1)
+    }
+  }
 });

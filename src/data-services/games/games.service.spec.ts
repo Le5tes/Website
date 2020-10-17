@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import { GamesService } from './games.service';
 
-describe('GamesServiceService', () => {
+describe('GamesService', () => {
   let service: GamesService;
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('GamesServiceService', () => {
         {largeThumbnail: 'https://www.cats.org.uk/uploads/branches/231/Kit/Boba_red_sofa_small.jpg'},
         {largeThumbnail: 'https://www.cats.org.uk/uploads/branches/231/Kit/Boba_red_sofa_small.jpg'},
         {largeThumbnail: 'https://www.cats.org.uk/uploads/branches/231/Kit/Boba_red_sofa_small.jpg'},
-        {largeThumbnail: 'https://www.cats.org.uk/uploads/branches/231/Kit/Boba_red_sofa_small.jpg'}
+        {largeThumbnail: 'https://www.warrenphotographic.co.uk/photography/cats/27940.jpg'}
       ]);
     });
   });

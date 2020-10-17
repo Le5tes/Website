@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "architect": {
@@ -31,7 +31,7 @@
               "src/styles.scss",
               "src/styles/gaming-theme.scss"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/marked/lib/marked.js"],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -92,7 +92,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/marked/lib/marked.js"],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -142,5 +142,5 @@
       }
     }
   },
-  "defaultProject": "lestes-gaming"
+  "defaultProject": "lestes-tech"
 }
