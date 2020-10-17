@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { routes } from './app-routing.module'; 
 import { expect} from 'chai'; 
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { byDataQa } from '../test-utils/test-helpers';

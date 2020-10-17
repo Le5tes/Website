@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { LandingModule } from 'src/pages/landing/landing.module';
 import { GamesModule } from 'src/pages/games/games.module';
 import { AboutModule } from 'src/pages/about/about.module';
