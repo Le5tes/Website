@@ -50,7 +50,7 @@ describe('AppComponent', () => {
   });
 
   it(`should have as title 'lestes-gaming'`, () => {
-    expect(appComponent.title).to.equal('lestes-gaming');
+    expect(appComponent.title).to.equal('lestes-tech');
   });
 
   it('should route to the landing page by default', () => {
@@ -64,7 +64,7 @@ describe('AppComponent', () => {
     
     it('should render title in a h1 tag', () => {
       fixture.detectChanges();
-      expect(nativeElement.querySelector('h1').textContent).to.contain('Welcome to lestes-gaming!');
+      expect(nativeElement.querySelector('h1').textContent).to.contain('Welcome to lestes-tech!');
     });
 
     describe('navigation buttons', () => {
