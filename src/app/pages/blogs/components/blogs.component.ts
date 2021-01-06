@@ -8,10 +8,15 @@ import { BlogsService } from '../services/blogs.service';
 })
 export class BlogsComponent implements OnInit {
   blogs;
+  creatingBlog = false;
 
   constructor(public blogsService: BlogsService) { }
 
   ngOnInit(): void {
     this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs);
+  }
+
+  newBlog() {
+    this.creatingBlog = true;
   }
 }

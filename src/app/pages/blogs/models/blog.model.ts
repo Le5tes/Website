@@ -1,5 +1,5 @@
 export class Blog {
     username: string;
-    createdAt: Date;
+    createdAt?: Date;
     body: string;
 }

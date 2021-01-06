@@ -14,4 +14,8 @@ export class BlogsService {
   getBlogs (): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.getBlogsUrl);
   }
+
+  postBlog(blog: Blog) {
+    return this.http.post(this.getBlogsUrl, blog);
+  }
 }

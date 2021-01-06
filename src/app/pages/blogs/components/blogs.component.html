@@ -1,0 +1,9 @@
+<ng-container *ngIf="!creatingBlog">
+    <button data-qa="create-blog-button" (click)="newBlog()">Write new blog</button>
+    <div data-qa="blogs"> 
+        <div *ngFor="let blog of blogs">
+            <app-blog data-qa="blog" [blog]="blog"></app-blog>
+        </div>
+    </div>
+</ng-container>
+<app-create-blog *ngIf="creatingBlog" data-qa="create-blog"></app-create-blog>

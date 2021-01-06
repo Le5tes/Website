@@ -5,16 +5,18 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LandingModule } from 'src/pages/landing/landing.module';
-import { GamesModule } from 'src/pages/games/games.module';
-import { AboutModule } from 'src/pages/about/about.module';
+import { LandingModule } from './pages/landing/landing.module';
+import { GamesModule } from './pages/games/games.module';
+import { AboutModule } from './pages/about/about.module';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
+import { BlogsModule } from './pages/blogs/blogs.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    BlogsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

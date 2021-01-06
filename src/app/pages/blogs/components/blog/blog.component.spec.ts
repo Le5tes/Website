@@ -1,8 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { expect } from 'chai';
+import sinon from 'sinon';
 
 import { BlogComponent } from './blog.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
+import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
@@ -11,7 +13,9 @@ describe('BlogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogComponent ]
+      declarations: [ BlogComponent ],
+      imports: [MarkdownModule.forRoot()], 
+      // providers: [{provide: MarkdownService, useValue: sinon.createStubInstance(MarkdownService)}]
     })
     .compileComponents();
   }));
@@ -29,7 +33,7 @@ describe('BlogComponent', () => {
   });
 
   it('should show the body with the value passed in', () => {
-    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.equal(getBlog().body);
+    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.contain(getBlog().body);
   });
 
   const getBlog = () => {

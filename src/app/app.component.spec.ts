@@ -3,14 +3,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { routes } from './app-routing.module'; 
 import { expect} from 'chai'; 
+import * as sinon from 'sinon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { byDataQa } from '../test-utils/test-helpers';
-import { GamesModule } from 'src/pages/games/games.module';
-import { LandingModule } from 'src/pages/landing/landing.module';
-import { AboutModule } from 'src/pages/about/about.module';
-import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
+import { GamesModule } from './pages/games/games.module';
+import { LandingModule } from './pages/landing/landing.module';
+import { AboutModule } from './pages/about/about.module';
+import { SlideSelectorModule } from '../modules/slide-selector/slide-selector.module';
+import { BlogsService } from './pages/blogs/services/blogs.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -31,7 +33,8 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
-      ]
+      ],
+      providers: [{provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)}]
     }).compileComponents();
   }));
 
@@ -49,7 +52,7 @@ describe('AppComponent', () => {
     expect(appComponent).to.exist;
   });
 
-  it(`should have as title 'lestes-gaming'`, () => {
+  it(`should have as title 'lestes-tech'`, () => {
     expect(appComponent.title).to.equal('lestes-tech');
   });
 
@@ -78,6 +81,18 @@ describe('AppComponent', () => {
           tick()
           
           expect(location.path()).to.equal('/games')
+        }));
+      });
+      describe('blog', () => {
+        it('should exist', () => {
+          expect(getElementByDataQa('blog-header-button')).to.exist;
+        });
+
+        it('should navigate to the blog page', fakeAsync(() => {
+          getElementByDataQa('blog-header-button').click();
+          tick()
+          
+          expect(location.path()).to.equal('/blog')
         }));
       });
 
