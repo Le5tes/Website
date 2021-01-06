@@ -32,10 +32,43 @@ describe('SecurityService', () => {
 
       httpTestingController.expectOne((request: HttpRequest<{}>) => {
         expect(request.method).to.equals('POST');
-        // expect(request.body).to.deep.equal({username: 'Tim', password: 'Password'})
+        expect(request.body).to.deep.equal({username: 'Tim', password: 'Password'})
         expect(request.url).to.equal(service.loginUrl);
         return true;
-      })
+      });
+    });
+  });
+
+  describe('getCurrentUser', () => {
+    beforeEach(() => {
+      service.currentUserUrl = '/url';
+    });
+
+    it('should make a call to the blog endpoint get the user', () => {
+      let result
+      service.getCurrentUser().subscribe((res) => result = res);
+
+
+      httpTestingController.expectOne((request: HttpRequest<{}>) => {
+        expect(request.method).to.equals('GET');
+        expect(request.url).to.equal(service.currentUserUrl);
+        return true;
+      }).flush({ user: 'Tim' });
+
+      expect(result).to.deep.equal({ user: 'Tim' });
+    });
+
+    it('should make a call to the blog endpoint get the user', () => {
+      let result;
+      service.getCurrentUser().subscribe((res) => result = res);
+
+      httpTestingController.expectOne((request: HttpRequest<{}>) => {
+        expect(request.method).to.equals('GET');
+        expect(request.url).to.equal(service.currentUserUrl);
+        return true;
+      }).flush('Error', {status: 401, statusText: 'Unauthorised'});
+
+      expect(result).to.be.null;
     });
   });
 });
