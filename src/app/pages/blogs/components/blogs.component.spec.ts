@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import { BlogsService } from '../services/blogs.service';
 import { BlogComponent } from './blog/blog.component';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
+import { CreateBlogComponent } from './create-blog/create-blog.component';
 
 describe('BlogsComponent', () => {
   let expect;
@@ -24,7 +25,7 @@ describe('BlogsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogsComponent, BlogComponent ],
+      declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent ],
       imports: [MarkdownModule.forRoot()],
       providers: [
         {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
