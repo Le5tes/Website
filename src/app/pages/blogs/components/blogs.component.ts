@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SecurityService } from 'src/app/services/security/security.service';
 import { BlogsService } from '../services/blogs.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { BlogsService } from '../services/blogs.service';
 })
 export class BlogsComponent implements OnInit {
   blogs;
+  loggedIn;
   creatingBlog = false;
 
-  constructor(public blogsService: BlogsService) { }
+  constructor(public blogsService: BlogsService, public securityService: SecurityService) { }
 
   ngOnInit(): void {
+    this.securityService.getCurrentUser().subscribe((loggedIn) => this.loggedIn = loggedIn); 
     this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs);
   }
 

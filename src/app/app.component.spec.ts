@@ -13,6 +13,7 @@ import { LandingModule } from './pages/landing/landing.module';
 import { AboutModule } from './pages/about/about.module';
 import { SlideSelectorModule } from '../modules/slide-selector/slide-selector.module';
 import { BlogsService } from './pages/blogs/services/blogs.service';
+import { SecurityService } from './services/security/security.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -34,7 +35,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers: [{provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)}]
+      providers: [
+        {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
+        {provide: SecurityService, useValue: sinon.createStubInstance(SecurityService)}
+      ]
     }).compileComponents();
   }));
 

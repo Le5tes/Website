@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as chai from 'chai';
 import * as sinon from 'sinon';
 import * as sinonChai from 'sinon-chai';
@@ -10,6 +10,7 @@ import { BlogsService } from '../services/blogs.service';
 import { BlogComponent } from './blog/blog.component';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
+import { SecurityService } from 'src/app/services/security/security.service';
 
 describe('BlogsComponent', () => {
   let expect;
@@ -23,12 +24,13 @@ describe('BlogsComponent', () => {
     expect = chai.expect;
   });
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent ],
       imports: [MarkdownModule.forRoot()],
       providers: [
         {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
+        {provide: SecurityService, useValue: sinon.createStubInstance(SecurityService)}
       ]
     });
   }));
@@ -66,11 +68,16 @@ describe('BlogsComponent', () => {
         createBlogButton = () => nativeElement.querySelector(byDataQa('create-blog-button'));
       });
 
-      // it('shouldn\'t exist if not logged in', () => {
-      //   expect(createBlogButton()).not.to.exist;
-      // });
+      it('shouldn\'t exist if not logged in', () => {
+        expect(createBlogButton()).not.to.exist;
+      });
 
       context('when logged in', () => {
+        beforeEach(waitForAsync(() => {
+          (component.securityService.getCurrentUser as sinon.SinonStub).returns(of({user: 'Tim'}));
+          fixture.detectChanges();
+        }));
+
         it('should exist', () => {
           expect(createBlogButton()).to.exist;
         });
