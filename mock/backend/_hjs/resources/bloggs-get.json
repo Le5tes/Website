@@ -1,0 +1,20 @@
+{
+  "_get": {
+    "/bloggs": [
+      {
+        "_req": {},
+        "_res": {
+          "_body": [{
+            "username": "Tim",
+            "body": "This is a mocked up blog!"
+          },
+          {
+            "username": "Tim",
+            "body": "This is another mocked up blog!"
+          }]
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}

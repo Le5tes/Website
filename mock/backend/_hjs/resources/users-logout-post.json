@@ -1,0 +1,17 @@
+{
+  "_post": {
+    "/users/logout": [
+      {
+        "_req": {
+          "_body": {
+            "dummy": "dummy"
+          }
+        },
+        "_res": {
+          "_status": 200
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}

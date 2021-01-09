@@ -1,0 +1,15 @@
+{
+  "_get": {
+    "/users/loggedIn": [
+      {
+        "_req": {},
+        "_res": {
+          "_body": {
+            "user": "Tim"
+          }
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}

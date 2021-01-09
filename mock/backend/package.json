@@ -1,0 +1,17 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"_start": "hjs start",
+		"_test": "env KEY=local mocha ./_hjs --recursive --exit",
+		"_start-dev": "hjs start --dev"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@hectorjs/stub-backend": "^1.3.0"
+	}
+}

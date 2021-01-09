@@ -1,0 +1,17 @@
+{
+  "_post": {
+    "/bloggs": [
+      {
+        "_req": {
+          "_body": {
+            "dummy": "dummy"
+          }
+        },
+        "_res": {
+          "_status": 201
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}
