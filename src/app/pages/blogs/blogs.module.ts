@@ -11,7 +11,7 @@ import { CreateBlogComponent } from './components/create-blog/create-blog.compon
   imports: [
     HttpClientModule,
     CommonModule,
-    MarkdownModule
+    MarkdownModule.forRoot()
   ]
 })
 export class BlogsModule { }

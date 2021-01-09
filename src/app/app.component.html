@@ -3,9 +3,12 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <button data-qa="games-header-button" (click)="navigateTo('games')">Games</button>
-  <button data-qa="blog-header-button" (click)="navigateTo('blog')">Blog</button>
-  <button data-qa="about-header-button" (click)="navigateTo('about')">About</button>
+
+  <div class="navigation-buttons">
+    <button class="header-button" data-qa="games-header-button" (click)="navigateTo('games')">Games</button>
+    <button class="header-button" data-qa="blog-header-button" (click)="navigateTo('blog')">Blog</button>
+    <button class="header-button" data-qa="about-header-button" (click)="navigateTo('about')">About</button>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
