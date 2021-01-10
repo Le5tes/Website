@@ -56,12 +56,31 @@ describe('CreateBlogComponent', () => {
       });
 
       it('should emit to close', () => {
-        const stubEmit = sinon.stub(component.close, 'emit');
+        const stubEmit = sinon.stub(component.closeComponent, 'emit');
 
         createBlogButton.click();
 
         expect(stubEmit).to.have.been.calledWith(true);
       });
+    });
+  });
+
+  describe('cancel button', () => {
+    let cancelButton;
+    beforeEach(() => {
+      cancelButton = nativeElement.querySelector(byDataQa('cancel'));
+    })
+
+    it('should exist', () => {
+      expect(cancelButton).to.exist;
+    });
+
+    it('should emit to close when clicked', () => {
+      const stubEmit = sinon.stub(component.closeComponent, 'emit');
+
+      cancelButton.click();
+
+      expect(stubEmit).to.have.been.calledWith(true);
     });
   });
 });

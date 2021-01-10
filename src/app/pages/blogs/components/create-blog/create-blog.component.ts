@@ -8,7 +8,7 @@ import { Blog } from '../../models/blog.model';
 })
 export class CreateBlogComponent implements OnInit {
   @Output() createBlog = new EventEmitter<Blog>();
-  @Output() close = new EventEmitter<boolean>();
+  @Output() closeComponent = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -17,6 +17,10 @@ export class CreateBlogComponent implements OnInit {
 
   postBlog() {
     this.createBlog.emit(new Blog())
-    this.close.emit(true);
+    this.closeBlog();
+  }
+  
+  closeBlog() {
+    this.closeComponent.emit(true);
   }
 }

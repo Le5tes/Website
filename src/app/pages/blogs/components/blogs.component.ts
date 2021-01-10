@@ -22,4 +22,8 @@ export class BlogsComponent implements OnInit {
   newBlog() {
     this.creatingBlog = true;
   }
+
+  stopCreatingBlog() {
+    this.creatingBlog = false;
+  }
 }

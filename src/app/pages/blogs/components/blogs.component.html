@@ -7,5 +7,5 @@
             </div>
         </div>
     </ng-container>
-    <app-create-blog *ngIf="creatingBlog" data-qa="create-blog"></app-create-blog>
+    <app-create-blog *ngIf="creatingBlog" data-qa="create-blog" (closeComponent)="stopCreatingBlog()"></app-create-blog>
 </div>

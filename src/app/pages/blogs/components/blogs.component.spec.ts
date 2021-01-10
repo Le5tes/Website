@@ -18,6 +18,7 @@ describe('BlogsComponent', () => {
   let fixture: ComponentFixture<BlogsComponent>;
   let nativeElement;
   let stubGetBlogs;
+  let stubCurrentUser;
 
   before(() => {
     chai.use(sinonChai);
@@ -41,6 +42,8 @@ describe('BlogsComponent', () => {
     nativeElement = fixture.nativeElement;
     stubGetBlogs = component.blogsService.getBlogs as sinon.SinonStub;
     stubGetBlogs.returns(of(getBlogs()));
+    stubCurrentUser = component.securityService.getCurrentUser as sinon.SinonStub;
+    stubCurrentUser.returns(of(null));
     fixture.detectChanges();
   });
 
@@ -74,7 +77,8 @@ describe('BlogsComponent', () => {
 
       context('when logged in', () => {
         beforeEach(waitForAsync(() => {
-          (component.securityService.getCurrentUser as sinon.SinonStub).returns(of({user: 'Tim'}));
+          stubCurrentUser.returns(of({user: 'Tim'}));
+          component.ngOnInit();
           fixture.detectChanges();
         }));
 
