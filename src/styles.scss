@@ -1,9 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
 
+@include mat-core();
+
+$game-primary: mat-palette($mat-indigo);
+$game-accent: mat-palette($mat-pink, A200, A100, A400);
+$game-warn: mat-palette($mat-red);
+
+$game-theme: mat-dark-theme($game-primary, $game-accent, $game-warn);
+
+$light-primary: mat-palette($mat-light-blue);
+$light-accent: mat-palette($mat-green);
+$light-warn: mat-palette($mat-red);
+
+$light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+
+@include angular-material-theme($game-theme);
+
+html, body { height: 100%; }
 body {
     margin: 0;
 }
 
 .content-container {
     margin: 0 10%;
+}
+
+.light-robot-theme {
+    @include angular-material-theme($light-theme);
 }

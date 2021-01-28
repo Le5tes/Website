@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { LandingModule } from './pages/landing/landing.module';
 import { GamesModule } from './pages/games/games.module';
 import { AboutModule } from './pages/about/about.module';
@@ -20,7 +21,8 @@ import { BlogsModule } from './pages/blogs/blogs.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatToolbarModule, 
+    MatToolbarModule,
+    MatIconModule, 
     LandingModule,
     GamesModule,
     SlideSelectorModule,

@@ -12,4 +12,8 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getDate() {
+    return this.blog.createdOn || 'unknown';
+  }
 }

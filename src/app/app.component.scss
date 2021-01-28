@@ -1,11 +1,25 @@
 .navigation-buttons {
     padding: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
 }
 
 .header-button {
     padding: 10px;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
     border: none;
     background: none;
+}
+
+.header-padding {
+    flex-grow: 1;
+}
+
+.full-page {
+    height: 100%;
 }

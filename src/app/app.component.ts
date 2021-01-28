@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'lestes-tech';
+  lightTheme = true
 
   constructor(public router: Router) {
 
@@ -15,5 +16,13 @@ export class AppComponent {
 
   navigateTo(path) {
     this.router.navigate([path])
+  }
+
+  toggleTheme() {
+    this.lightTheme = !this.lightTheme;
+  }
+
+  get theme () {
+    return this.lightTheme ? 'light-robot-theme' : '';
   }
 }
