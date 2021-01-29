@@ -11,6 +11,7 @@ import { GamesModule } from './pages/games/games.module';
 import { AboutModule } from './pages/about/about.module';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 import { BlogsModule } from './pages/blogs/blogs.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BlogsModule } from './pages/blogs/blogs.module';
     LandingModule,
     GamesModule,
     SlideSelectorModule,
-    AboutModule
+    AboutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

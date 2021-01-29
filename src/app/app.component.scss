@@ -8,6 +8,14 @@
     font-size: 24px;
 }
 
+.robot-icon {
+    width: 100px !important;
+    height: 100px !important;
+    transform: scale(0.5);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
 .header-button {
     padding: 10px;
     color: white;

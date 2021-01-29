@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +12,12 @@ export class AppComponent {
   title = 'lestes-tech';
   lightTheme = true
 
-  constructor(public router: Router) {
-
+  constructor(
+      public router: Router, 
+      private matIconRegistry: MatIconRegistry,
+      private domSanitizer: DomSanitizer
+    ) {
+    this.matIconRegistry.addSvgIcon('robot', this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/robot-blank.svg'));
   }
 
   navigateTo(path) {
