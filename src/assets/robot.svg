@@ -9,7 +9,7 @@
         }
     </style>
     <path stroke="black" stroke-width="1.5" fill="grey" d="M 55,45 L 55,30 L 50,30 L 65,15 L 65,30 L 65,18 L 68,18 L 68,27 L 65,27 L 65,30 L 55,30 L 63,30 L 63,45 "/>
-    <path stroke="black" stroke-width="1.5" fill="grey" d="M 10,75 A 35,35 0,0,1 90,75 z"/>
+    <path stroke="black" stroke-width="1.5" fill="grey" d="M 15,75 A 35,35 0,0,1 85,75 z"/>
 
     <use href="#cog-wheel" transform="translate(20,70)"/>
     <use href="#cog-wheel" transform="translate(80,70)"/>
