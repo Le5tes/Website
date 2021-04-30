@@ -18,7 +18,7 @@ export class BlogsService {
     return this.http.get<Blog[]>(this.getBlogsUrl);
   }
 
-  postBlog(blog: Blog) {
+  postBlog(blog) {
     return this.http.post(this.getBlogsUrl, blog);
   }
 }

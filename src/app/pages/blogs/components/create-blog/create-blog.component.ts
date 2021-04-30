@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Blog } from '../../models/blog.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-blog',
@@ -7,16 +7,18 @@ import { Blog } from '../../models/blog.model';
   styleUrls: ['./create-blog.component.scss']
 })
 export class CreateBlogComponent implements OnInit {
-  @Output() createBlog = new EventEmitter<Blog>();
+  @Output() createBlog = new EventEmitter();
   @Output() closeComponent = new EventEmitter<boolean>();
+  form: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({blog: []})
   }
 
   postBlog() {
-    this.createBlog.emit(new Blog())
+    this.createBlog.emit(this.form.value)
     this.closeBlog();
   }
   

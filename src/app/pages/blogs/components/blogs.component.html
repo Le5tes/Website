@@ -8,5 +8,5 @@
             </div>
         </div>
     </ng-container>
-    <app-create-blog *ngIf="creatingBlog" data-qa="create-blog" (closeComponent)="stopCreatingBlog()"></app-create-blog>
+    <app-create-blog *ngIf="creatingBlog" data-qa="create-blog" (closeComponent)="stopCreatingBlog()" (createBlog)="uploadBlog($event)"></app-create-blog>
 </div>

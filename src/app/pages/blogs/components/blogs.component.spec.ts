@@ -11,6 +11,8 @@ import { BlogComponent } from './blog/blog.component';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { SecurityService } from 'src/app/services/security/security.service';
+import { Blog } from '../models/blog.model';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('BlogsComponent', () => {
   let expect;
@@ -28,7 +30,7 @@ describe('BlogsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent ],
-      imports: [MarkdownModule.forRoot()],
+      imports: [MarkdownModule.forRoot(), ReactiveFormsModule],
       providers: [
         {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
         {provide: SecurityService, useValue: sinon.createStubInstance(SecurityService)}
@@ -102,6 +104,43 @@ describe('BlogsComponent', () => {
           
           it('should be hidden when clicked', () => {
             expect(createBlogButton()).not.to.exist;
+          });
+
+          context('when it emits the create blog signal', () => {
+            let blog : Blog;
+
+            beforeEach(() => {
+              blog = {
+                username: 'Tim',
+                createdAt: new Date(2020, 0, 1),
+                body: 'NEW BLOG TODAY!'
+              }
+
+              component.uploadBlog(blog);
+            });
+
+            it('should call to the blogs service with the blog', () => {
+              expect(component.blogsService.postBlog).to.have.been.calledWith(blog);
+            });
+          });
+
+          context('when it emits the close signal', () => {
+            beforeEach(() => {
+              component.stopCreatingBlog();
+              fixture.detectChanges();
+            });
+
+            it('should close the create blog component', () => {
+              expect(nativeElement.querySelector(byDataQa('create-blog'))).not.to.exist;
+            });
+            
+            it('should show the other blogs', () => {
+              expect(nativeElement.querySelector(byDataQa('blogs'))).to.exist;
+            });
+            
+            it('should be hidden when clicked', () => {
+              expect(createBlogButton()).to.exist;
+            });
           });
         });
       });

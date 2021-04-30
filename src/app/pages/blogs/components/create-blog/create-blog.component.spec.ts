@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import  * as chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -20,7 +21,8 @@ describe('CreateBlogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateBlogComponent]
+      declarations: [CreateBlogComponent],
+      imports: [ReactiveFormsModule]
     })
       .compileComponents();
   });
@@ -52,7 +54,7 @@ describe('CreateBlogComponent', () => {
 
         createBlogButton.click();
 
-        expect(stubEmit).to.have.been.called;
+        expect(stubEmit).to.have.been.calledWith(component.form.value);
       });
 
       it('should emit to close', () => {

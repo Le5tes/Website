@@ -26,4 +26,8 @@ export class BlogsComponent implements OnInit {
   stopCreatingBlog() {
     this.creatingBlog = false;
   }
+
+  uploadBlog(event) {
+    this.blogsService.postBlog(event);
+  }
 }

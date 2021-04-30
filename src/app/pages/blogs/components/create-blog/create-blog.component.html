@@ -1,3 +1,5 @@
 <button data-qa="cancel" (click)="closeBlog()">cancel</button>
-<textarea></textarea>
+<form [formGroup]="form">
+    <textarea formControlName="blog"></textarea>
+</form>
 <button data-qa="create-blog" (click)="postBlog()">Post Blog</button>

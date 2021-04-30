@@ -12,6 +12,7 @@ import { AboutModule } from './pages/about/about.module';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 import { BlogsModule } from './pages/blogs/blogs.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule, 
     LandingModule,
