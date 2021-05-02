@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
+@import 'scss/typography';
 
 @include mat-core();
 
@@ -23,7 +24,7 @@ body {
 }
 
 .content-container {
-    margin: 0 10%;
+    margin: 0 20%;
 }
 
 .light-robot-theme {
