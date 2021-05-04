@@ -1,0 +1,17 @@
+{
+  "_put": {
+    "/images/putUrl": [
+      {
+        "_req": {
+          
+        },
+        "_res": {
+          "_body": {
+            "dummyResponse": "dummyResponse"
+          }
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}

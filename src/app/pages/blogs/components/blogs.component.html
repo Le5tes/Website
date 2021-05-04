@@ -1,7 +1,7 @@
 <div class="content-container">
     <ng-container *ngIf="!creatingBlog">
         <h1>Recent Blogs</h1>
-        <button data-qa="create-blog-button" *ngIf="loggedIn" (click)="newBlog()">Write new blog</button>
+        <button data-qa="create-blog-button" class="ui-button" *ngIf="loggedIn" (click)="newBlog()">Write new blog</button>
         <div data-qa="blogs"> 
             <div *ngFor="let blog of blogs" class="blog">
                 <app-blog data-qa="blog" [blog]="blog"></app-blog>

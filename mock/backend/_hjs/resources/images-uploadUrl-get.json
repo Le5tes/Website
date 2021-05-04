@@ -1,0 +1,15 @@
+{
+  "_get": {
+    "/images/uploadUrl": [
+      {
+        "_req": {},
+        "_res": {
+          "_body": {
+            "url": "http://localhost:3005/images/putUrl"
+          }
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}

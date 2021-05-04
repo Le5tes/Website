@@ -1,0 +1,15 @@
+{
+  "_get": {
+    "/images": [
+      {
+        "_req": {},
+        "_res": {
+          "_body": {
+            "body": "To be defined"
+          }
+        },
+        "_description": "Description to be defined"
+      }
+    ]
+  }
+}

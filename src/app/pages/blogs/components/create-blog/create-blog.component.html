@@ -1,5 +1,6 @@
-<button data-qa="cancel" (click)="closeBlog()">cancel</button>
+<button data-qa="cancel" class="ui-button" (click)="closeBlog()">cancel</button>
+<app-upload></app-upload>
 <form [formGroup]="form">
-    <textarea formControlName="blog"></textarea>
+    <textarea class="large-text-area" formControlName="blog"></textarea>
 </form>
-<button data-qa="create-blog" (click)="postBlog()">Post Blog</button>
+<button data-qa="create-blog" class="ui-button" (click)="postBlog()">Post Blog</button>

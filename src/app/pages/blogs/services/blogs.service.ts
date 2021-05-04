@@ -11,7 +11,7 @@ export class BlogsService {
   getBlogsUrl: string;
 
   constructor(public http: HttpClient) {
-    this.getBlogsUrl = environment.blogUrl + '/bloggs'
+    this.getBlogsUrl = environment.blogUrl + '/bloggs';
   }
 
   getBlogs (): Observable<Blog[]> {

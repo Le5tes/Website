@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
 import { CreateBlogComponent } from './components/create-blog/create-blog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UploadComponent } from './components/upload/upload.component';
 
 @NgModule({
-  declarations: [BlogsComponent, BlogComponent, CreateBlogComponent],
+  declarations: [BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent],
   imports: [
     HttpClientModule,
     CommonModule,
