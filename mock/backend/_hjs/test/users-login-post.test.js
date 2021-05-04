@@ -14,10 +14,6 @@ describe('POST - users/login ', () => {
       .end((err, res) => {
           expect(err).to.not.exist;
           expect(res.status).to.equal(200);
-          expect(res.body).to.deep.equal({
-            'dummyResponse': 'dummyResponse'
- 
-          });
           done();
       });
   });

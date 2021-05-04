@@ -14,7 +14,7 @@ describe('GET - images/uploadUrl ', () => {
           expect(err).to.not.exist;
           expect(res.status).to.equal(200);
           expect(res.body).to.deep.equal({
-            'body': 'To be defined'
+            'url': 'http://localhost:3005/images/putUrl'
           });
           done();
       });
