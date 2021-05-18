@@ -113,7 +113,7 @@ describe('BlogsComponent', () => {
               blog = {
                 username: 'Tim',
                 createdAt: new Date(2020, 0, 1),
-                body: 'NEW BLOG TODAY!'
+                blog: 'NEW BLOG TODAY!'
               }
 
               component.uploadBlog(blog);

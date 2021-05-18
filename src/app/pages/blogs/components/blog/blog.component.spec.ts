@@ -33,13 +33,13 @@ describe('BlogComponent', () => {
   });
 
   it('should show the body with the value passed in', () => {
-    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.contain(getBlog().body);
+    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.contain(getBlog().blog);
   });
 
   const getBlog = () => {
     return {
       username: 'Tim',
-      body: 'BODY',
+      blog: 'BODY',
       createdAt: new Date(2020,0,1)
     }
   }
