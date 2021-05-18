@@ -4,3 +4,5 @@
     <textarea class="large-text-area" formControlName="blog"></textarea>
 </form>
 <button data-qa="create-blog" class="ui-button" (click)="postBlog()">Post Blog</button>
+<h4>Preview:</h4>
+<app-blog data-qa="preview" [blog]="previewBlog"></app-blog>

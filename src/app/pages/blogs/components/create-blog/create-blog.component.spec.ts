@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as chai from 'chai';
+import { MarkdownModule } from 'ngx-markdown';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { byDataQa } from 'src/test-utils/test-helpers';
+import { BlogComponent } from '../blog/blog.component';
 
 
 import { CreateBlogComponent } from './create-blog.component';
@@ -21,8 +23,11 @@ describe('CreateBlogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateBlogComponent],
-      imports: [ReactiveFormsModule]
+      declarations: [CreateBlogComponent, BlogComponent],
+      imports: [
+        ReactiveFormsModule,
+        MarkdownModule.forRoot()
+      ]
     })
       .compileComponents();
   });
@@ -36,6 +41,15 @@ describe('CreateBlogComponent', () => {
 
   it('should create', () => {
     expect(component).to.exist;
+  });
+
+  describe('preview', () => {
+    it('should show a blog with the blog post as it\'s being written', () => {
+      component.form.controls.blog.setValue('my blog!!');
+      fixture.detectChanges();
+
+      expect(nativeElement.querySelector(byDataQa('preview')).textContent).to.include('my blog!!');
+    });
   });
 
   describe('create blog button', () => {
