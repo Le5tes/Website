@@ -5,6 +5,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { byDataQa } from 'src/test-utils/test-helpers';
+import { ImagePipe } from '../../pipes/image.pipe';
 import { BlogComponent } from '../blog/blog.component';
 
 
@@ -23,7 +24,7 @@ describe('CreateBlogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateBlogComponent, BlogComponent],
+      declarations: [CreateBlogComponent, BlogComponent, ImagePipe],
       imports: [
         ReactiveFormsModule,
         MarkdownModule.forRoot()

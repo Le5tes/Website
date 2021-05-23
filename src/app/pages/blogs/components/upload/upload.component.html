@@ -4,6 +4,6 @@
 </label>
 <ul>
    <li data-qa="uploaded-file" *ngFor="let file of files | keyvalue" [class]="file.value">
-       {{file.key}}
+       {{file.key}} (use "![](/image-server/{{file.key}})" in your blog post!)
    </li> 
 </ul>

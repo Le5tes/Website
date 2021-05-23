@@ -1,21 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { expect } from 'chai';
-import sinon from 'sinon';
 
 import { BlogComponent } from './blog.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
-import { MarkdownModule, MarkdownService } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
+import { ImagePipe } from '../../pipes/image.pipe';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
   let fixture: ComponentFixture<BlogComponent>;
   let nativeElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogComponent ],
+      declarations: [ BlogComponent, ImagePipe ],
       imports: [MarkdownModule.forRoot()], 
-      // providers: [{provide: MarkdownService, useValue: sinon.createStubInstance(MarkdownService)}]
     })
     .compileComponents();
   }));

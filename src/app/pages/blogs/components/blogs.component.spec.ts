@@ -13,6 +13,7 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { SecurityService } from 'src/app/services/security/security.service';
 import { Blog } from '../models/blog.model';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImagePipe } from '../pipes/image.pipe';
 
 describe('BlogsComponent', () => {
   let expect;
@@ -29,7 +30,7 @@ describe('BlogsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent ],
+      declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent, ImagePipe ],
       imports: [MarkdownModule.forRoot(), ReactiveFormsModule],
       providers: [
         {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
