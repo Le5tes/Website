@@ -2,3 +2,8 @@
     Upload image
     <input data-qa="file-input" type="file" style="display:none" (change)="fileChanged($event)">
 </label>
+<ul>
+   <li data-qa="uploaded-file" *ngFor="let file of files | keyvalue" [class]="file.value">
+       {{file.key}}
+   </li> 
+</ul>

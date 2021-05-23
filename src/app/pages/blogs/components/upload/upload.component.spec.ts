@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import  * as chai from 'chai';
-import { of, scheduled } from 'rxjs';
+import { NEVER, of, scheduled } from 'rxjs';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { byDataQa } from 'src/test-utils/test-helpers';
@@ -60,6 +60,47 @@ describe('UploadComponent', () => {
       component.fileChanged(fileEvent);
 
       expect(component.service.upload).to.have.been.calledWith(file);
+    });
+
+    it('should show the filename in a list with the pending icon while it is uploading', () => {
+      (component.service.upload as sinon.SinonStub).returns(NEVER)
+
+      const file = new File([''], 'filename.jpeg', { type: 'image/jpeg' });
+
+      const fileEvent = {
+        target: {
+          files: [
+            file
+          ]
+        }
+      };
+
+      component.fileChanged(fileEvent);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector(byDataQa('uploaded-file'))).to.exist;
+      expect(fixture.nativeElement.querySelector(byDataQa('uploaded-file')).textContent).to.include('filename.jpeg');
+      expect(fixture.nativeElement.querySelector(byDataQa('uploaded-file')).classList.toString()).to.include('pending');
+    });
+
+
+    it('should show the filename in a list with the success icon while it is uploaded', () => {
+      (component.service.upload as sinon.SinonStub).returns(of('Success'))
+
+      const file = new File([''], 'filename.jpeg', { type: 'image/jpeg' });
+
+      const fileEvent = {
+        target: {
+          files: [
+            file
+          ]
+        }
+      };
+
+      component.fileChanged(fileEvent);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector(byDataQa('uploaded-file'))).to.exist;
+      expect(fixture.nativeElement.querySelector(byDataQa('uploaded-file')).textContent).to.include('filename.jpeg');
+      expect(fixture.nativeElement.querySelector(byDataQa('uploaded-file')).classList.toString()).to.include('success');
     });
   });
 });
