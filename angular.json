@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lestes-gaming": {
+    "lestes-tech": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/lestes-gaming",
+            "outputPath": "dist/lestes-tech",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lestes-gaming:build"
+            "browserTarget": "lestes-tech:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lestes-gaming:build:production"
+              "browserTarget": "lestes-tech:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lestes-gaming:build"
+            "browserTarget": "lestes-tech:build"
           }
         },
         "test": {
@@ -113,7 +113,7 @@
         }
       }
     },
-    "lestes-gaming-e2e": {
+    "lestes-tech-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -122,11 +122,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "lestes-gaming:serve"
+            "devServerTarget": "lestes-tech:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "lestes-gaming:serve:production"
+              "devServerTarget": "lestes-tech:serve:production"
             }
           }
         },
