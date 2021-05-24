@@ -2,7 +2,13 @@
 <app-upload></app-upload>
 <form [formGroup]="form">
     <textarea class="large-text-area" formControlName="blog"></textarea>
+    <div class="flex-container">
+        <div class="flex-item">
+            <div class="label-container"><label for="tags">Add tags (comma separated)</label></div>
+            <input id="tags" formControlName="tags"/>
+        </div>
+        <button data-qa="create-blog" class="ui-button" (click)="postBlog()">Post Blog</button>
+    </div>
 </form>
-<button data-qa="create-blog" class="ui-button" (click)="postBlog()">Post Blog</button>
 <h4>Preview:</h4>
 <app-blog data-qa="preview" [blog]="previewBlog"></app-blog>

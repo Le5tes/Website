@@ -15,7 +15,10 @@ export class CreateBlogComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({blog: []})
+    this.form = this.fb.group({
+      blog: [],
+      tags: []
+    });
   }
 
   postBlog() {
