@@ -1,24 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import 'scss/typography';
 @import 'scss/buttons';
 @import 'scss/inputs';
 
-@include mat-core();
+@include mat.core();
 
-$game-primary: mat-palette($mat-indigo);
-$game-accent: mat-palette($mat-pink, A200, A100, A400);
-$game-warn: mat-palette($mat-red);
+$game-primary: mat.define-palette(mat.$indigo-palette);
+$game-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$game-warn: mat.define-palette(mat.$red-palette);
 
-$game-theme: mat-dark-theme($game-primary, $game-accent, $game-warn);
+$game-theme: mat.define-dark-theme($game-primary, $game-accent, $game-warn);
 
-$light-primary: mat-palette($mat-light-blue);
-$light-accent: mat-palette($mat-green);
-$light-warn: mat-palette($mat-red);
+$light-primary: mat.define-palette(mat.$light-blue-palette);
+$light-accent: mat.define-palette(mat.$green-palette);
+$light-warn: mat.define-palette(mat.$red-palette);
 
-$light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+$light-theme: mat.define-light-theme($light-primary, $light-accent, $light-warn);
 
-@include angular-material-theme($game-theme);
+@include mat.all-component-themes($game-theme);
 
 html, body { height: 100%; }
 body {
@@ -30,5 +30,5 @@ body {
 }
 
 .light-robot-theme {
-    @include angular-material-theme($light-theme);
+    @include mat.all-component-themes($light-theme);
 }
