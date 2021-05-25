@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { expect } from 'chai';
 
 import { SlideSelectorComponent } from './slide-selector.component';
@@ -9,7 +9,7 @@ describe('SlideSelectorComponent', () => {
   let fixture: ComponentFixture<SlideSelectorComponent>;
   let nativeElement: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SlideSelectorComponent]
     })

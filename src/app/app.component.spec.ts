@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { routes } from './app-routing.module'; 
@@ -25,7 +25,7 @@ describe('AppComponent', () => {
   let router: Router;
   let location: Location;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     const stubBlogs = sinon.createStubInstance(BlogsService);
     stubBlogs.getBlogs.returns(of(getBlogs()));
     const stubSecurity = sinon.createStubInstance(SecurityService);
