@@ -7,6 +7,7 @@ phases:
         commands: 
             - npm i -g @angular/cli
             - npm i
+            - CHROME_BIN="node_modules/puppeteer/.local_chromium"
     pre_build:
         commands: 
             - echo "run tests"
