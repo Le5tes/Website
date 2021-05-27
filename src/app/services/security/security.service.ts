@@ -17,10 +17,10 @@ export class SecurityService {
   }
 
   login( username, password) {
-    return this.http.post(this.loginUrl, {username: username, password: password});
+    return this.http.post(this.loginUrl, {username: username, password: password}, {withCredentials: true});
   }
 
   getCurrentUser() {
-    return this.http.get(this.currentUserUrl).pipe(catchError(err => of(null)));
+    return this.http.get(this.currentUserUrl, {withCredentials: true}).pipe(catchError(err => of(null)));
   }
 }
