@@ -34,13 +34,13 @@ describe('ImageService', () => {
     it('should make a call to get an upload url, then a put to that url with the file', () => {
       const signedUrl = 'http://image.url'
       const expected = {url: signedUrl}
-      const file = {file: "a file!"}
+      const file = {name: 'myfile.jpeg',file: 'a file!'}
 
       service.upload(file).subscribe(() => {})
 
       httpTestingController.expectOne((request: HttpRequest<{}>) => {
         expect(request.method).to.equals('GET');
-        expect(request.url).to.equal(service.uploadUrl);
+        expect(request.url).to.equal(service.uploadUrl +'/myfile.jpeg');
         return true;
       }).flush(expected);
 

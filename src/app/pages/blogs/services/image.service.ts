@@ -16,6 +16,6 @@ export class ImageService {
   }
 
   upload(file) {
-    return this.http.get(this.uploadUrl).pipe(mergeMap((res: {url: string})=> this.http.put(res.url, file)));
+    return this.http.get(this.uploadUrl + '/' + file.name).pipe(mergeMap((res: {url: string})=> this.http.put(res.url, file)));
   }
 }
