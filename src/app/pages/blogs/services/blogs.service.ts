@@ -19,6 +19,6 @@ export class BlogsService {
   }
 
   postBlog(blog) {
-    return this.http.post(this.getBlogsUrl, blog);
+    return this.http.post(this.getBlogsUrl, blog, {withCredentials: true});
   }
 }
