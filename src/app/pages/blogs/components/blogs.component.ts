@@ -28,6 +28,6 @@ export class BlogsComponent implements OnInit {
   }
 
   uploadBlog(event) {
-    this.blogsService.postBlog(event);
+    this.blogsService.postBlog(event).subscribe();
   }
 }

@@ -16,4 +16,10 @@ describe('ImagePipe', () => {
     pipe.environment = {blogUrl: 'http://server'}
     expect(pipe.transform('![](/image-server/file.jpg')).to.equal('![](http://server/images/file.jpg')
   });
+
+  it('should replace all instances of "/image-server/"', () => {
+    pipe.environment = {blogUrl: 'http://server'}
+    expect(pipe.transform('![](/image-server/file.jpg\n![](/image-server/file2.jpg'))
+    .to.equal('![](http://server/images/file.jpg\n![](http://server/images/file2.jpg');
+  });
 });
