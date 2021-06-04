@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Blog } from '../../models/blog.model';
 
 @Component({
   selector: 'app-blog',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  @Input() blog;
+  @Input() blog: Blog;
 
   constructor() { }
 
@@ -14,9 +15,9 @@ export class BlogComponent implements OnInit {
   }
 
   getDate() {
-    return this.blog.createdOn || 'unknown';
+    return this.blog.createdAt || 'unknown';
   }
   get blogText() {
-    return this.blog.blog;
+    return this.blog.body;
   }
 }

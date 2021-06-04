@@ -16,13 +16,13 @@ export class CreateBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      blog: [],
+      body: [],
       tags: []
     });
   }
 
   postBlog() {
-    this.createBlog.emit(this.form.value)
+    this.createBlog.emit(this.form.value as Blog)
     this.closeBlog();
   }
   
@@ -31,6 +31,6 @@ export class CreateBlogComponent implements OnInit {
   }
 
   get previewBlog() {
-    return Object.assign({username: "Bob"}, this.form.value);
+    return Object.assign({username: "Bob"}, this.form.value as Blog);
   }
 }

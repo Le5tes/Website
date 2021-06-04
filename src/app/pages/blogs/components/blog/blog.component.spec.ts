@@ -5,6 +5,7 @@ import { BlogComponent } from './blog.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { MarkdownModule } from 'ngx-markdown';
 import { ImagePipe } from '../../pipes/image.pipe';
+import { Blog } from '../../models/blog.model';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
@@ -32,14 +33,14 @@ describe('BlogComponent', () => {
   });
 
   it('should show the body with the value passed in', () => {
-    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.contain(getBlog().blog);
+    expect(nativeElement.querySelector(byDataQa('body')).textContent).to.contain(getBlog().body);
   });
 
   const getBlog = () => {
     return {
       username: 'Tim',
-      blog: 'BODY',
+      body: 'BODY',
       createdAt: new Date(2020,0,1)
-    }
+    } as Blog;
   }
 });
