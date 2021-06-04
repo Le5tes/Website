@@ -45,6 +45,8 @@ describe('BlogsComponent', () => {
     nativeElement = fixture.nativeElement;
     stubGetBlogs = component.blogsService.getBlogs as sinon.SinonStub;
     stubGetBlogs.returns(of(getBlogs()));
+    (component.blogsService.postBlog as sinon.SinonStub).returns(of());
+
     stubCurrentUser = component.securityService.getCurrentUser as sinon.SinonStub;
     stubCurrentUser.returns(of(null));
     fixture.detectChanges();
