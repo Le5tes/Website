@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { NavigationService } from './services/navigation/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent {
   lightTheme = true
 
   constructor(
-    public router: Router,
+    public navigationService: NavigationService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   navigateTo(path) {
-    this.router.navigate([path])
+    this.navigationService.goto(path);
   }
 
   toggleTheme() {

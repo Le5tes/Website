@@ -1,12 +1,10 @@
 import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { routes } from './app-routing.module'; 
-import { expect} from 'chai'; 
+import * as chai from 'chai'; 
 import * as sinon from 'sinon';
+import * as sinonChai from 'sinon-chai';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { byDataQa } from '../test-utils/test-helpers';
 import { GamesModule } from './pages/games/games.module';
 import { LandingModule } from './pages/landing/landing.module';
@@ -18,13 +16,18 @@ import { BlogsModule } from './pages/blogs/blogs.module';
 import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { NavigationService } from './services/navigation/navigation.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let nativeElement: HTMLElement;
   let appComponent: AppComponent;
-  let router: Router;
-  let location: Location;
+  let expect;
+
+  before(() => {
+    chai.use(sinonChai);
+    expect = chai.expect;
+  });
 
   beforeEach(waitForAsync(() => {
     const stubBlogs = sinon.createStubInstance(BlogsService);
@@ -34,7 +37,6 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         MatToolbarModule,
         MatIconModule,
@@ -49,19 +51,17 @@ describe('AppComponent', () => {
       ],
       providers: [
         {provide: BlogsService, useValue: stubBlogs},
-        {provide: SecurityService, useValue: stubSecurity}
+        {provide: SecurityService, useValue: stubSecurity},
+        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
       ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    router = TestBed.get(Router);
-    location = TestBed.get(Location);
     
     fixture = TestBed.createComponent(AppComponent);
     nativeElement = fixture.debugElement.nativeElement;
     appComponent = fixture.debugElement.componentInstance;
-    router.initialNavigation();
   });
 
   it('should create the app', () => {
@@ -70,10 +70,6 @@ describe('AppComponent', () => {
 
   it(`should have as title 'lestes-tech'`, () => {
     expect(appComponent.title).to.equal('lestes-tech');
-  });
-
-  it('should route to the landing page by default', () => {
-    expect(location.path()).to.equal('/');
   });
 
   describe('menu', () => {
@@ -104,12 +100,11 @@ describe('AppComponent', () => {
           expect(getElementByDataQa('blog-header-button')).to.exist;
         });
 
-        it('should navigate to the blog page', fakeAsync(() => {
+        it('should navigate to the blog page', () => {
           getElementByDataQa('blog-header-button').click();
-          tick()
           
-          expect(location.path()).to.equal('/blog')
-        }));
+          expect(appComponent.navigationService.goto).to.have.been.calledWith('blog');
+        });
       });
 
       describe('about', () => {
@@ -117,12 +112,11 @@ describe('AppComponent', () => {
           expect(getElementByDataQa('about-header-button')).to.exist;
         });
 
-        it('should navigate to the games page', fakeAsync(() => {
+        it('should navigate to the about page', () => {
           getElementByDataQa('about-header-button').click();
-          tick()
           
-          expect(location.path()).to.equal('/about')
-        }));
+          expect(appComponent.navigationService.goto).to.have.been.calledWith('about')
+        });
       });
     });
   });
