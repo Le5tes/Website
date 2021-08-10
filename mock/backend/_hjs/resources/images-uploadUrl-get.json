@@ -1,6 +1,6 @@
 {
   "_get": {
-    "/images/uploadUrl": [
+    "/images/uploadUrl/*.*": [
       {
         "_req": {},
         "_res": {

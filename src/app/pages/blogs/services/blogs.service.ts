@@ -15,7 +15,7 @@ export class BlogsService {
   }
 
   getBlogs (): Observable<Blog[]> {
-    return this.http.get<Blog[]>(this.getBlogsUrl);
+    return this.http.get<Blog[]>(this.getBlogsUrl, {params: {limit: 10}});
   }
 
   postBlog(blog) {

@@ -41,6 +41,7 @@ describe('BlogService', () => {
       httpTestingController.expectOne((request: HttpRequest<{}>) => {
         expect(request.method).to.equals('GET');
         expect(request.url).to.equal(service.getBlogsUrl);
+        expect(request.params.get('limit')).to.equal(10);
         return true;
       }).flush(expected);
 
