@@ -17,6 +17,7 @@ import { SecurityService } from './services/security/security.service';
 import { BlogsModule } from './pages/blogs/blogs.module';
 import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -36,6 +37,7 @@ describe('AppComponent', () => {
         RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         MatToolbarModule,
+        MatIconModule,
         GamesModule,
         BlogsModule,
         LandingModule,

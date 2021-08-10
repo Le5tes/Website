@@ -13,10 +13,10 @@ export class AppComponent {
   lightTheme = true
 
   constructor(
-      public router: Router, 
-      private matIconRegistry: MatIconRegistry,
-      private domSanitizer: DomSanitizer
-    ) {
+    public router: Router,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
     this.matIconRegistry.addSvgIcon('robot', this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/robot-blank.svg'));
   }
 

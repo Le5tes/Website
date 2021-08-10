@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as chai from 'chai';
@@ -6,8 +7,9 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { ImagePipe } from '../../pipes/image.pipe';
+import { ImageService } from '../../services/image.service';
 import { BlogComponent } from '../blog/blog.component';
-
+import { UploadComponent } from '../upload/upload.component';
 
 import { CreateBlogComponent } from './create-blog.component';
 
@@ -24,10 +26,13 @@ describe('CreateBlogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateBlogComponent, BlogComponent, ImagePipe],
+      declarations: [CreateBlogComponent, BlogComponent, ImagePipe, UploadComponent],
       imports: [
         ReactiveFormsModule,
         MarkdownModule.forRoot()
+      ],
+      providers: [
+        {provide: ImageService, useValue: sinon.createStubInstance(ImageService)}
       ]
     })
       .compileComponents();

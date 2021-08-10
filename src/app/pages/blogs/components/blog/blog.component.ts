@@ -17,6 +17,7 @@ export class BlogComponent implements OnInit {
   getDate() {
     return this.blog.createdAt || 'unknown';
   }
+
   get blogText() {
     return this.blog.body;
   }
