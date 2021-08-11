@@ -13,6 +13,7 @@ import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.m
 import { BlogsModule } from './pages/blogs/blogs.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginModule } from './pages/login/login.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule, 
     LandingModule,
     GamesModule,
+    LoginModule,
     SlideSelectorModule,
     AboutModule,
     HttpClientModule

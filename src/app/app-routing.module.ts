@@ -4,12 +4,14 @@ import { GamesComponent } from './pages/games/components/games/games.component';
 import { LandingComponent } from './pages/landing/components/landing/landing.component';
 import { AboutComponent } from './pages/about/components/about/about.component';
 import { BlogsComponent } from './pages/blogs/components/blogs.component';
+import { LoginComponent } from './pages/login/components/login/login.component';
 
 export const routes: Routes = [
   {path: '', component: BlogsComponent},
   {path: 'games', component: GamesComponent},
   {path: 'blog', component: BlogsComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

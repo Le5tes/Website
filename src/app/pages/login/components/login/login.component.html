@@ -1,0 +1,23 @@
+<div class="content-container">
+    <form [formGroup]="form">
+        <div class="field">
+            <div><label for="user-box">Username</label></div>
+            <input id="user-box" data-qa="user-box" formControlName="username">
+        </div>
+        <div class="field">
+            <div><label for="password-box">Password</label></div>
+            <input type="password" id="password-box" data-qa="password-box" formControlName="password">
+        </div>
+        <div class="field">
+            <button data-qa="login-button" class="ui-button" (click)="login()">Login</button>
+        </div>
+
+        <div *ngIf="authenticationError" data-qa="incorrect-login" class="error">
+            <p>Login failed.</p><p>Check your username and password.</p>
+        </div>
+
+        <div *ngIf="serviceError" data-qa="failed-login" class="error">
+            <p>Login failed.</p><p>This looks to be an error on our side :(</p>
+        </div>
+    </form>
+</div>
