@@ -10,6 +10,7 @@ import { NavigationService } from './services/navigation/navigation.service';
 })
 export class AppComponent {
   title = 'lestes-tech';
+  iconOptions: string;
   lightTheme = true
 
   constructor(
@@ -18,6 +19,7 @@ export class AppComponent {
     private domSanitizer: DomSanitizer
   ) {
     this.matIconRegistry.addSvgIcon('robot', this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/robot-blank.svg'));
+    this.iconOptions = this.chooseIconOptions();
   }
 
   navigateTo(path) {
@@ -30,5 +32,9 @@ export class AppComponent {
 
   get theme () {
     return this.lightTheme ? 'light-robot-theme' : '';
+  }
+
+  private chooseIconOptions () {
+    return Math.random() > 0.8 ? 'hide-eye' : 'hide-arm';
   }
 }

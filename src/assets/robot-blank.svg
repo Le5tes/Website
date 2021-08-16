@@ -7,15 +7,43 @@
                 transform: rotate(360deg);
             }
         }
+
+        @keyframes rotate-part-reverse {
+            100% {
+                transform: rotate(-30deg);
+            }
+        }
+
+        @keyframes rotate-part {
+            100% {
+                transform: rotate(30deg);
+            }
+        }
     </style>
-    <path stroke-width="1.5" d="M 55,45 L 55,30 L 50,30 L 65,15 L 65,30 L 65,18 L 68,18 L 68,27 L 65,27 L 65,30 L 55,30 L 63,30 L 63,45 "/>
-    
+    <g id="eye-stalk"><path stroke-width="1.5" d="M 55,45 L 55,30 L 50,30 L 65,15 L 65,30 L 65,18 L 68,18 L 68,27 L 65,27 L 65,30 L 55,30 L 63,30 L 63,45 "/></g>
+    <g id="arm">
+        <circle cy="28.5" cx="15" r="5"/>
+        <path stroke-width="1.5" d="M 50,50 L 10,30 L 15,25 L 70,10 L 70,15 L 19,29 L 55,45"/>
+        <circle cy="12.5" cx="70" r="4"/>
+
+        <use href="#finger-1" transform="translate(70,10)"/>
+        <use href="#finger-2" transform="translate(70,15)"/>
+    </g>
+
     <path stroke-width="1.5" d="M 15,75 A 35,35 0,0,1 85,75 z"/>
 
     <use href="#cog-wheel" transform="translate(20,70)"/>
     <use href="#cog-wheel" transform="translate(80,70)"/>
     
     <defs>
+    <g id="finger-1" style="animation: rotate-part-reverse 1s linear infinite alternate;">
+        <path stroke-width="1.5" d="M 0,0 L 5,-5 L 10,0 L 10,2 L 5,-3 L 0,2"/>
+    </g>
+
+    <g id="finger-2" style="animation: rotate-part 1s linear infinite alternate;">
+        <path stroke-width="1.5" d="M 0,0 L 5,5 L 10,0 L 10,-2 L 5,3 L 0,-2"/>
+    </g>
+
     <g id="cog-wheel"  style="animation: rotate 3s linear infinite;" >
         <g transform="scale(0.075,0.075)">
             <g transform="translate(-255,-255)">

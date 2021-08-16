@@ -32,3 +32,11 @@ body {
 .light-robot-theme {
     @include mat.all-component-themes($light-theme);
 }
+
+.hide-eye svg g#eye-stalk {
+    display: none;
+}
+
+.hide-arm svg g#arm {
+    display: none;
+}
