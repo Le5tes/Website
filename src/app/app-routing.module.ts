@@ -5,11 +5,13 @@ import { LandingComponent } from './pages/landing/components/landing/landing.com
 import { AboutComponent } from './pages/about/components/about/about.component';
 import { BlogsComponent } from './pages/blogs/components/blogs.component';
 import { LoginComponent } from './pages/login/components/login/login.component';
+import { ProjectsComponent } from './pages/projects/components/projects/projects.component';
 
 export const routes: Routes = [
   {path: '', component: BlogsComponent},
   {path: 'games', component: GamesComponent},
   {path: 'blog', component: BlogsComponent},
+  {path: 'projects', component: ProjectsComponent},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent}
 ];

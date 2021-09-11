@@ -107,6 +107,18 @@ describe('AppComponent', () => {
         });
       });
 
+      describe('projects', () => {
+        it('should exist', () => {
+          expect(getElementByDataQa('projects-header-button')).to.exist;
+        });
+
+        it('should navigate to the projects page', () => {
+          getElementByDataQa('projects-header-button').click();
+          
+          expect(appComponent.navigationService.goto).to.have.been.calledWith('projects');
+        });
+      });
+
       describe('about', () => {
         it('should exist', () => {
           expect(getElementByDataQa('about-header-button')).to.exist;

@@ -14,6 +14,7 @@ import { BlogsModule } from './pages/blogs/blogs.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './pages/login/login.module';
+import { ProjectsModule } from './pages/projects/projects.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoginModule } from './pages/login/login.module';
     LandingModule,
     GamesModule,
     LoginModule,
+    ProjectsModule,
     SlideSelectorModule,
     AboutModule,
     HttpClientModule
