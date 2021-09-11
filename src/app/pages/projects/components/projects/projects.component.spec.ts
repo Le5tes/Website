@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import * as chai from 'chai';
+import { SafePipeModule } from 'safe-pipe';
 
 import { ProjectsComponent } from './projects.component';
 
@@ -14,7 +15,8 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectsComponent ]
+      declarations: [ ProjectsComponent ],
+      imports: [SafePipeModule]
     })
     .compileComponents();
   });
