@@ -4,11 +4,24 @@
       {
         "_req": {
           "_body": {
-            "dummy": "dummy"
+            "username": "Tim",
+            "password": "Password"
           }
         },
         "_res": {
           "_status": 200
+        },
+        "_description": "Description to be defined"
+      },
+      {
+        "_req": {
+          "_body": {
+            "username": "Tim",
+            "password": "Wrong"
+          }
+        },
+        "_res": {
+          "_status": 401
         },
         "_description": "Description to be defined"
       }
