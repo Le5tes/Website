@@ -175,15 +175,15 @@ describe('BlogsComponent', () => {
   const getDisorderedBlogs = () => {
     return [{
       username: 'Tim',
-      createdAt: new Date(2020, 0, 1),
+      createdAt: "2020-01-01T00:00:00.000Z",
       body: 'NEW BLOG!'
     }, {
       username: 'Tim',
-      createdAt: new Date(2019, 11, 19),
+      createdAt: "2019-12-19T00:00:00.000Z",
       body: 'NEW BLOG!'
     }, {
       username: 'Tim',
-      createdAt: new Date(2020, 0, 9),
+      createdAt: "2020-01-09T00:00:00.000Z",
       body: 'NEW BLOG!'
     }]
   }
