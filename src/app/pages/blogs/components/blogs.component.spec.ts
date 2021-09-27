@@ -47,7 +47,7 @@ describe('BlogsComponent', () => {
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement;
     stubGetBlogs = component.blogsService.getBlogs as sinon.SinonStub;
-    stubGetBlogs.returns(of(getBlogs()));
+    stubGetBlogs.returns(of(getDisorderedBlogs()));
     (component.blogsService.postBlog as sinon.SinonStub).returns(of());
 
     stubCurrentUser = component.securityService.getCurrentUser as sinon.SinonStub;
@@ -62,13 +62,16 @@ describe('BlogsComponent', () => {
   context('on init', () => {
     it('should make a call to get the latest blog posts', () => {
       expect(stubGetBlogs).to.have.been.called;
+    });
+    
+    it('should order the blogs by date (most recent first)', () => {
       expect(component.blogs).to.deep.equal(getBlogs());
     });
   });
 
   describe('display blogs', () => {
     it('should create a blog element for each blog item on the component', () => {
-      expect(nativeElement.querySelectorAll(byDataQa('blog')).length).to.equal(2);
+      expect(nativeElement.querySelectorAll(byDataQa('blog')).length).to.equal(3);
     });
   });
 
@@ -156,7 +159,27 @@ describe('BlogsComponent', () => {
   const getBlogs = () => {
     return [{
       username: 'Tim',
+      createdAt: new Date(2020, 0, 9),
+      body: 'NEW BLOG!'
+    }, {
+      username: 'Tim',
       createdAt: new Date(2020, 0, 1),
+      body: 'NEW BLOG!'
+    }, {
+      username: 'Tim',
+      createdAt: new Date(2019, 11, 19),
+      body: 'NEW BLOG!'
+    }]
+  }
+
+  const getDisorderedBlogs = () => {
+    return [{
+      username: 'Tim',
+      createdAt: new Date(2020, 0, 1),
+      body: 'NEW BLOG!'
+    }, {
+      username: 'Tim',
+      createdAt: new Date(2019, 11, 19),
       body: 'NEW BLOG!'
     }, {
       username: 'Tim',

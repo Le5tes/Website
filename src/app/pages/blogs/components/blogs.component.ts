@@ -16,7 +16,7 @@ export class BlogsComponent implements OnInit {
 
   ngOnInit(): void {
     this.securityService.getCurrentUser().subscribe((loggedIn) => this.loggedIn = loggedIn); 
-    this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs);
+    this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs.sort((a,b) => b.createdAt.getTime() - a.createdAt.getTime()));
   }
 
   newBlog() {
