@@ -1,10 +1,59 @@
 <div class="content-container">
-    <h1>My projects</h1>
+  <h1>My projects</h1>
 
-    <h2>Sudoku Solver</h2>
-    <p>This algorithm uses constraint propagation combined with the backtracking algorithm to solve sudokus.</p>
-    <p>Fill a sudoku in and click 'Solve'</p>
-    <iframe [src]="projects.sudokuUrl | safe: 'resourceUrl'" width="420" height="430"></iframe>
-    <p>The code is written in python and deployed to AWS lambda. Micro-frontend built with react.</p>
-    <p>Unfortunately since this project was submitted as a university assignment I can't make the code publicly available :(.</p>
+  <h2>Sudoku Solver</h2>
+  <p>
+    This algorithm uses constraint propagation combined with the backtracking
+    algorithm to solve sudokus.
+  </p>
+  <p>Fill a sudoku in and click 'Solve'</p>
+  <iframe
+    [src]="projects.sudokuUrl | safe: 'resourceUrl'"
+    width="420"
+    height="430"
+  ></iframe>
+  <p>
+    The code is written in python and deployed to AWS lambda. Micro-frontend
+    built with react.
+  </p>
+  <p>
+    Unfortunately since this project was submitted as a university assignment I
+    can't make the code publicly available :(.
+  </p>
+
+  <h2>Gravity simulations</h2>
+  <p>
+    A little while ago I had the idea to build a space exploration browser game,
+    which would include some realistic orbital mechanics. Ultimately I ended up
+    getting a bit distracted trying to build high performance gravity
+    simulations capable of running in a browser. The simulations I built use
+    Simplectic Euler, with using the barnes hut algorithm to bring the
+    complexity down from O(n^2) to O(nlogn).
+  </p>
+  <p>
+    The barnes hut algorithm is split into two stages. First the alogrithm
+    builds a quadtree (would be octtree in 3d), where each node has a center of
+    mass and contains 4 subnodes. The terminal nodes (leaves) each contain one
+    of the celestial bodies. The second stage is for each celestial body to
+    calculate the forces on it by traversing the tree, adding forces to the body
+    from nodes if the node is sufficiently far away and small enough or if the
+    node is too close or too large, going deeper into the tree.
+  </p>
+  <p>
+    For a more full explaination of barnes-hut see
+    <a href="http://arborjs.org/docs/barnes-hut"
+      >The Barnes Hut Algorithm on arbor.js</a
+    >.
+  </p>
+  <p>
+    For the tree-building operation I ended up using webassembly to run c++ code
+    in the browser (my initial javascript object based implementation was taking
+    several seconds for each timestep). For the tree-traversal step adding up
+    the forces, I used gpu.js to run the clculations on the gpu, allowing for
+    simultaneous execution.
+  </p>
+  <p>
+    I built a few connected npm modules which are documented at
+    <a href="http://www.gravitysimulator.net/">gravitysimulator.net</a>
+  </p>
 </div>
