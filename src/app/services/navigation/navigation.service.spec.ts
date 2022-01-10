@@ -2,7 +2,7 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import { expect} from 'chai'; 
+import { expect } from 'chai'; 
 import * as sinon from 'sinon';
 import { routes } from 'src/app/app-routing.module';
 

@@ -1,0 +1,33 @@
+.preview-container {
+  border-radius: 4px;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 16px;
+}
+
+.contained-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-text {
+  display: block;
+  margin-top: -150px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  position: relative;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  background-color: #ffffff80;
+}
+
+.title {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.description {
+  display: inline-block;
+}
