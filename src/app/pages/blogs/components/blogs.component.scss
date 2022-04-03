@@ -1,4 +1,14 @@
+.blogs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .blog {
-    padding-top: 16px;
-    padding-bottom: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 300px;
+  min-width: 300px;
+  min-height: 300px;
+  max-height: 300px;
+  flex-grow: 1;
 }
