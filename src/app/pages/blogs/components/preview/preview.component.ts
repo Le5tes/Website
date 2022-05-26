@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { NavigationService } from "src/app/services/navigation/navigation.service";
 
 @Component({
   selector: "app-preview",
@@ -8,7 +9,11 @@ import { Component, Input, OnInit } from "@angular/core";
 export class PreviewComponent implements OnInit {
   @Input() blog;
 
-  constructor() {}
+  constructor(public navigationService: NavigationService) {}
 
   ngOnInit(): void {}
+
+  onClick(): void {
+    this.navigationService.goto(`blogs/${this.blog.id}`)
+  }
 }

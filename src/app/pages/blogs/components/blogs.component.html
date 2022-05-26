@@ -4,7 +4,7 @@
         <button data-qa="create-blog-button" class="ui-button" *ngIf="loggedIn" (click)="newBlog()">Write new blog</button>
         <div data-qa="blogs" class="blogs"> 
             <div *ngFor="let blog of blogs" class="blog">
-                <app-preview data-qa="blog" [blog]="blog"></app-preview>
+                <app-preview data-qa="blog-preview" [blog]="blog"></app-preview>
             </div>
         </div>
     </ng-container>

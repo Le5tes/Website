@@ -1,17 +1,29 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { expect } from "chai";
+import * as chai from 'chai';
+import * as sinon from 'sinon';
+import * as sinonChai from 'sinon-chai';
+import { NavigationService } from "src/app/services/navigation/navigation.service";
 import { byDataQa } from "src/test-utils/test-helpers";
 
 import { PreviewComponent } from "./preview.component";
 
 describe("PreviewComponent", () => {
+  let expect;
   let component: PreviewComponent;
   let fixture: ComponentFixture<PreviewComponent>;
   let nativeElement;
 
+  before(() => {
+    chai.use(sinonChai);
+    expect = chai.expect;
+  });
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PreviewComponent],
+      providers: [
+        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+      ]
     }).compileComponents();
   });
 
@@ -20,6 +32,7 @@ describe("PreviewComponent", () => {
     nativeElement = fixture.nativeElement;
     component = fixture.componentInstance;
     component.blog = {
+      id: "testid123",
       createdAt: "2021-06-04T15:32:31.000Z",
       username: "Tim",
       title: "Starting a Robot Journey",
@@ -42,7 +55,7 @@ describe("PreviewComponent", () => {
     describe("image", () => {
       it("should display the image", () => {
         expect(
-          nativeElement.querySelector(byDataQa("image")).getAttribute("src")
+          getElementByDataQa("image").getAttribute("src")
         ).to.equal(component.blog.image);
       });
     });
@@ -50,7 +63,7 @@ describe("PreviewComponent", () => {
     describe('Title', () => {
       it("should contain the title", () => {
         expect(
-          nativeElement.querySelector(byDataQa("title")).textContent
+          getElementByDataQa("title").textContent
         ).to.contain(component.blog.title);
       });
     });
@@ -58,9 +71,22 @@ describe("PreviewComponent", () => {
     describe("description", () => {
       it("should contain the description", () => {
         expect(
-          nativeElement.querySelector(byDataQa("description")).textContent
+          getElementByDataQa("description").textContent
         ).to.contain(component.blog.description);
       });
     });
   });
+
+  describe("on click", () => {
+    it('should navigate to the blog\'s page', () => {
+      getElementByDataQa("preview-container").click();
+
+      expect(component.navigationService.goto).to.have.been.calledWith("blogs/testid123")
+    });
+  });
+
+
+  const getElementByDataQa = (dataQa: string) => {
+    return nativeElement.querySelector(byDataQa(dataQa)) as any;
+  }
 });

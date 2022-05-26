@@ -70,8 +70,8 @@ describe('BlogsComponent', () => {
   });
 
   describe('display blogs', () => {
-    it('should create a blog element for each blog item on the component', () => {
-      expect(nativeElement.querySelectorAll(byDataQa('blog')).length).to.equal(3);
+    it('should create a preview element for each blog item on the component', () => {
+      expect(nativeElement.querySelectorAll(byDataQa('blog-preview')).length).to.equal(3);
     });
   });
 
@@ -120,6 +120,7 @@ describe('BlogsComponent', () => {
 
             beforeEach(() => {
               blog = {
+                id: 'testId',
                 username: 'Tim',
                 createdAt: new Date(2020, 0, 1),
                 body: 'NEW BLOG TODAY!'

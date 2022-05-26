@@ -18,6 +18,10 @@ export class BlogsService {
     return this.http.get<Blog[]>(this.getBlogsUrl, {params: {limit: 10}});
   }
 
+  getBlogById(id: string): Observable<Blog> {
+    return this.http.get<Blog>(this.getBlogsUrl + "/" + id);
+  }
+
   postBlog(blog) {
     return this.http.post(this.getBlogsUrl, blog, {withCredentials: true});
   }
