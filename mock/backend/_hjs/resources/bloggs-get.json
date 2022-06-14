@@ -1,6 +1,6 @@
 {
   "_get": {
-    "/bloggs": [
+    "/bloggs?limit=10": [
       {
         "_req": {},
         "_res": {
