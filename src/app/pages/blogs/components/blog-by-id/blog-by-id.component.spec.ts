@@ -7,6 +7,8 @@ import { of } from 'rxjs';
 import { BlogsService } from '../../services/blogs.service';
 
 import { BlogByIdComponent } from './blog-by-id.component';
+import { BlogComponent } from '../blog/blog.component';
+import { ImagePipe } from '../../pipes/image.pipe';
 
 describe('BlogByIdComponent', () => {
   let expect;
@@ -24,7 +26,7 @@ describe('BlogByIdComponent', () => {
 
 
     await TestBed.configureTestingModule({
-      declarations: [ BlogByIdComponent ],
+      declarations: [ BlogByIdComponent, BlogComponent, ImagePipe ],
       providers: [
         {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
         {provide: ActivatedRoute, useValue: mockRoute}

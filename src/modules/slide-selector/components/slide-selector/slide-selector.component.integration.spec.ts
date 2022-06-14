@@ -1,8 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { expect } from 'chai';
+import * as sinon from 'sinon';
 
 import { SlideSelectorComponent } from './slide-selector.component';
 import { Component, ViewChild } from '@angular/core';
+import { PreviewComponent } from '../preview/preview.component';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 @Component({
    template: '<app-slide-selector [items]="items"></app-slide-selector>'
@@ -11,7 +14,7 @@ class WrapperComponent {
     @ViewChild(SlideSelectorComponent)
     public child: SlideSelectorComponent;
 
-    public items = [ {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}, {name: 'myItem', largeThumbnail: 'url/url'}];
+    public items = [ {name: 'myItem', image: 'url/url'}, {name: 'myItem', image: 'url/url2'}, {name: 'myItem', image: 'url/url3'}];
 }
 
 describe('slide-selector-component integration', () => {
@@ -23,9 +26,13 @@ let nativeElement: HTMLElement;
 beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ 
-          SlideSelectorComponent,
-          WrapperComponent
-        ]
+        SlideSelectorComponent,
+        WrapperComponent,
+        PreviewComponent
+      ],
+      providers: [
+        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+      ]
     })
     .compileComponents();
   }));
@@ -46,8 +53,11 @@ beforeEach(waitForAsync(() => {
     context('when passed three or less items', () => {
       it('should display the items\' previews', () => {
         expect(nativeElement.querySelector('[data-qa="previous-item-preview"]')).to.exist;
+        expect(nativeElement.querySelector('img[src="url/url"]')).to.exist;
         expect(nativeElement.querySelector('[data-qa="current-item-preview"]')).to.exist;
+        expect(nativeElement.querySelector('img[src="url/url2"]')).to.exist;
         expect(nativeElement.querySelector('[data-qa="next-item-preview"]')).to.exist;
+        expect(nativeElement.querySelector('img[src="url/url3"]')).to.exist;
       });
     });
   });
