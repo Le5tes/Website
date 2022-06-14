@@ -8,13 +8,14 @@ import { CreateBlogComponent } from './components/create-blog/create-blog.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadComponent } from './components/upload/upload.component';
 import { ImagePipe } from './pipes/image.pipe';
-import { PreviewComponent } from './components/preview/preview.component';
 import { BlogByIdComponent } from './components/blog-by-id/blog-by-id.component';
+import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 
 @NgModule({
-  declarations: [BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent, ImagePipe, PreviewComponent, BlogByIdComponent],
+  declarations: [BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent, ImagePipe, BlogByIdComponent],
   imports: [
     HttpClientModule,
+    SlideSelectorModule,
     CommonModule,
     ReactiveFormsModule,
     MarkdownModule.forRoot()

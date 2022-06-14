@@ -31,7 +31,7 @@ describe("PreviewComponent", () => {
     fixture = TestBed.createComponent(PreviewComponent);
     nativeElement = fixture.nativeElement;
     component = fixture.componentInstance;
-    component.blog = {
+    component.item = {
       id: "testid123",
       createdAt: "2021-06-04T15:32:31.000Z",
       username: "Tim",
@@ -51,12 +51,12 @@ describe("PreviewComponent", () => {
     expect(component).to.exist;
   });
 
-  describe("displaying blog post", () => {
+  describe("displaying item", () => {
     describe("image", () => {
       it("should display the image", () => {
         expect(
           getElementByDataQa("image").getAttribute("src")
-        ).to.equal(component.blog.image);
+        ).to.equal(component.item.image);
       });
     });
 
@@ -64,7 +64,7 @@ describe("PreviewComponent", () => {
       it("should contain the title", () => {
         expect(
           getElementByDataQa("title").textContent
-        ).to.contain(component.blog.title);
+        ).to.contain(component.item.title);
       });
     });
 
@@ -72,13 +72,14 @@ describe("PreviewComponent", () => {
       it("should contain the description", () => {
         expect(
           getElementByDataQa("description").textContent
-        ).to.contain(component.blog.description);
+        ).to.contain(component.item.description);
       });
     });
   });
 
   describe("on click", () => {
-    it('should navigate to the blog\'s page', () => {
+    it('should navigate to the item\'s page', () => {
+      component.url = 'blogs'
       getElementByDataQa("preview-container").click();
 
       expect(component.navigationService.goto).to.have.been.calledWith("blogs/testid123")

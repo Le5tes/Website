@@ -9,7 +9,7 @@ import { ProjectsComponent } from './pages/projects/components/projects/projects
 import { BlogByIdComponent } from './pages/blogs/components/blog-by-id/blog-by-id.component';
 
 export const routes: Routes = [
-  {path: '', component: BlogsComponent},
+  {path: '', component: LandingComponent},
   {path: 'games', component: GamesComponent},
   {path: 'blog', component: BlogsComponent},
   {path: 'blogs/:blogId', component: BlogByIdComponent},

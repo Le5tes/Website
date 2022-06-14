@@ -7,13 +7,14 @@ import { NavigationService } from "src/app/services/navigation/navigation.servic
   styleUrls: ["./preview.component.scss"],
 })
 export class PreviewComponent implements OnInit {
-  @Input() blog;
+  @Input() item;
+  @Input() url;
 
   constructor(public navigationService: NavigationService) {}
 
   ngOnInit(): void {}
 
   onClick(): void {
-    this.navigationService.goto(`blogs/${this.blog.id}`)
+    this.navigationService.goto(`${this.url}/${this.item.id}`)
   }
 }

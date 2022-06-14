@@ -44,8 +44,10 @@ beforeEach(waitForAsync(() => {
 
   describe('showing content', () => {
     context('when passed three or less items', () => {
-      it('should display the items\' images', () => {
-        expect(nativeElement.querySelector('img[src="url/url"]')).to.exist;
+      it('should display the items\' previews', () => {
+        expect(nativeElement.querySelector('[data-qa="previous-item-preview"]')).to.exist;
+        expect(nativeElement.querySelector('[data-qa="current-item-preview"]')).to.exist;
+        expect(nativeElement.querySelector('[data-qa="next-item-preview"]')).to.exist;
       });
     });
   });

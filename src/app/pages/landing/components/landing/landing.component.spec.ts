@@ -30,11 +30,17 @@ describe('LandingComponent', () => {
     expect(component).to.exist;
   });
 
-  describe('games slide-selector', () => {
-    it('should exist', () => {
-      expect(getElementByDataQa('games-slide-selector')).to.exist;
-    });
-  });
+  // describe('blogs slide-selector', () => {
+  //   it('should exist', () => {
+  //     expect(getElementByDataQa('blogs-slide-selector')).to.exist;
+  //   });
+  // });
+
+  // describe('games slide-selector', () => {
+  //   it('should exist', () => {
+  //     expect(getElementByDataQa('games-slide-selector')).to.exist;
+  //   });
+  // });
 
   const getElementByDataQa = (dataQa: string) => {
     return nativeElement.querySelector(byDataQa(dataQa)) as any;

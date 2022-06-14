@@ -1,0 +1,9 @@
+<div class="preview-container" data-qa="preview-container" (click)="onClick()">
+
+  <img data-qa="image" [src]="item.image" class="contained-image"/>
+  
+  <div class="overlay-text">
+    <h2 data-qa="title" class="title">{{ item.title }}</h2>
+    <p data-qa="description" class="description">{{ item.description }}</p>
+  </div>
+</div>
