@@ -1,11 +1,26 @@
 <button data-qa="cancel" class="ui-button" (click)="closeBlog()">cancel</button>
 <app-upload></app-upload>
 <form [formGroup]="form">
-    <textarea class="large-text-area" formControlName="body"></textarea>
+    <label>
+        <div class="label-container">Title</div>
+        <input formControlName="title" data-qa="title"/>
+    </label>
+    <label>
+        <div class="label-container">Description</div>
+        <textarea class="medium-text-area" formControlName="description" data-qa="description"></textarea>
+    </label>
+    <label>
+        <div class="label-container">Image Url (upload images above)</div>
+        <input formControlName="image" data-qa="image"/>
+    </label>
+    <label>
+        <div class="label-container">Blog Text</div>
+        <textarea class="large-text-area" formControlName="body" data-qa="body"></textarea>
+    </label>
     <div class="flex-container">
         <div class="flex-item">
             <div class="label-container"><label for="tags">Add tags (comma separated)</label></div>
-            <input id="tags" formControlName="tags"/>
+            <input id="tags" formControlName="tags" data-qa="tags"/>
         </div>
         <button data-qa="create-blog" class="ui-button" (click)="postBlog()">Post Blog</button>
     </div>

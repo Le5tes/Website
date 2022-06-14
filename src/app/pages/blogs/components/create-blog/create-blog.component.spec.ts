@@ -49,6 +49,43 @@ describe('CreateBlogComponent', () => {
     expect(component).to.exist;
   });
 
+  describe('fields', () => {
+    describe('title', () => {
+      it('should exist and have form control', () => {
+        expect(nativeElement.querySelector(byDataQa('title'))).to.exist;
+        expect(component.form.get('title')).to.exist;
+      });
+    });
+    
+    describe('description', () => {
+      it('should exist and have form control', () => {
+        expect(nativeElement.querySelector(byDataQa('description'))).to.exist;
+        expect(component.form.get('description')).to.exist;
+      });
+    });
+
+    describe('image', () => {
+      it('should exist and have form control', () => {
+        expect(nativeElement.querySelector(byDataQa('image'))).to.exist;
+        expect(component.form.get('image')).to.exist;
+      });
+    });
+
+    describe('body', () => {
+      it('should exist and have form control', () => {
+        expect(nativeElement.querySelector(byDataQa('body'))).to.exist;
+        expect(component.form.get('body')).to.exist;
+      });
+    });
+
+    describe('tags', () => {
+      it('should exist and have form control', () => {
+        expect(nativeElement.querySelector(byDataQa('tags'))).to.exist;
+        expect(component.form.get('tags')).to.exist;
+      });
+    });
+  });
+
   describe('preview', () => {
     it('should show a blog with the blog post as it\'s being written', () => {
       component.form.controls.body.setValue('my blog!!');

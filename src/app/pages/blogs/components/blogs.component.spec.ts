@@ -126,6 +126,9 @@ describe('BlogsComponent', () => {
                 id: 'testId',
                 username: 'Tim',
                 createdAt: new Date(2020, 0, 1),
+                title: 'NEW BLOG',
+                description: 'NEW BLOG',
+                image: 'url',
                 body: 'NEW BLOG TODAY!'
               }
 

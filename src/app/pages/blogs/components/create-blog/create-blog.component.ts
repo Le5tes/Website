@@ -16,6 +16,9 @@ export class CreateBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      title: [],
+      description: [],
+      image: [],
       body: [],
       tags: []
     });
