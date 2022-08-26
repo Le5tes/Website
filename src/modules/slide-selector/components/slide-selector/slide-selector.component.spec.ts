@@ -6,6 +6,7 @@ import { SlideSelectorComponent } from './slide-selector.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { PreviewComponent } from '../preview/preview.component';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { ImagePipe } from '../../pipes/image.pipe';
 
 describe('SlideSelectorComponent', () => {
   let component: SlideSelectorComponent;
@@ -14,7 +15,7 @@ describe('SlideSelectorComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SlideSelectorComponent, PreviewComponent],
+      declarations: [SlideSelectorComponent, PreviewComponent, ImagePipe],
       providers: [
         {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
       ]

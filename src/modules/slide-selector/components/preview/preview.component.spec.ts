@@ -4,6 +4,7 @@ import * as sinon from 'sinon';
 import * as sinonChai from 'sinon-chai';
 import { NavigationService } from "src/app/services/navigation/navigation.service";
 import { byDataQa } from "src/test-utils/test-helpers";
+import { ImagePipe } from "../../pipes/image.pipe";
 
 import { PreviewComponent } from "./preview.component";
 
@@ -20,7 +21,7 @@ describe("PreviewComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PreviewComponent],
+      declarations: [PreviewComponent, ImagePipe],
       providers: [
         {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
       ]
@@ -56,7 +57,7 @@ describe("PreviewComponent", () => {
       it("should display the image", () => {
         expect(
           getElementByDataQa("image").getAttribute("src")
-        ).to.equal(component.item.image);
+        ).to.equal('http://localhost:3005/images/robot-mk1.jpg');
       });
     });
 

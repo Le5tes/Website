@@ -6,6 +6,7 @@ import { SlideSelectorComponent } from './slide-selector.component';
 import { Component, ViewChild } from '@angular/core';
 import { PreviewComponent } from '../preview/preview.component';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { ImagePipe } from '../../pipes/image.pipe';
 
 @Component({
    template: '<app-slide-selector [items]="items"></app-slide-selector>'
@@ -28,7 +29,8 @@ beforeEach(waitForAsync(() => {
       declarations: [ 
         SlideSelectorComponent,
         WrapperComponent,
-        PreviewComponent
+        PreviewComponent,
+        ImagePipe
       ],
       providers: [
         {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
