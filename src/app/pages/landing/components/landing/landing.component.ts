@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogsService } from 'src/app/pages/blogs/services/blogs.service';
 import { GamesService } from 'src/app/pages/games/services/games.service';
 
 @Component({
@@ -8,9 +9,15 @@ import { GamesService } from 'src/app/pages/games/services/games.service';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(public gamesService: GamesService) { }
+  blogs
+
+  constructor(public gamesService: GamesService, public blogsService: BlogsService) { }
 
   ngOnInit() {
+    this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs.map((blog) => {
+      blog.createdAt = new Date(blog.createdAt);
+      return blog;
+    }).sort((a,b) => a.createdAt.getTime() - b.createdAt.getTime()));
   }
 
   public get games() { return this.gamesService.games}
