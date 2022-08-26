@@ -1,9 +1,10 @@
 export class Blog {
+    id: string
     username: string;
     createdAt?: Date;
-    title?: string;
+    title: string;
     description?: string;
-    image?: string;
+    image: string;
     body: string;
     tags?: string;
 }

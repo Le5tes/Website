@@ -1,11 +1,20 @@
 <ul *ngIf="currentItem" class="slide-list">
-  <li data-qa="previous-item" class="list-item" (click)="scrollBackward()">
-    <img class="item-large-thumbnail" src={{getImage(previousItem)}}>
+  <div class="arrow-container">
+    <img class="arrow" src="/assets/backward-arrow.svg" data-qa="back-arrow" (click)="scrollBackward()">
+  </div>
+
+  <li data-qa="previous-item" class="list-item" >
+    <app-preview [url]="url" [item]="previousItem" data-qa="previous-item-preview"></app-preview>
   </li>
-  <li class="list-item">
-    <img class="item-large-thumbnail" src={{getImage(currentItem)}}>
+
+  <li data-qa="current-item" class="list-item">
+    <app-preview [url]="url" [item]="currentItem" data-qa="current-item-preview"></app-preview>
   </li>
-  <li data-qa="next-item" class="list-item" (click)="scrollForward()">
-    <img class="item-large-thumbnail" src={{getImage(nextItem)}}>
+
+  <li data-qa="next-item" class="list-item">
+    <app-preview [url]="url" [item]="nextItem" data-qa="next-item-preview"></app-preview>
   </li>
+  <div class="arrow-container arrow-container-right">
+    <img class="arrow" src="/assets/forward-arrow.svg" data-qa="forward-arrow" (click)="scrollForward()">
+  </div>
 </ul>

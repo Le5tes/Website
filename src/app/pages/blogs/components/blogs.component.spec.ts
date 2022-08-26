@@ -16,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ImagePipe } from '../pipes/image.pipe';
 import { UploadComponent } from './upload/upload.component';
 import { ImageService } from '../services/image.service';
+import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
+import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 describe('BlogsComponent', () => {
   let expect;
@@ -33,10 +35,11 @@ describe('BlogsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent, ImagePipe ],
-      imports: [MarkdownModule.forRoot(), ReactiveFormsModule],
+      imports: [MarkdownModule.forRoot(), ReactiveFormsModule, SlideSelectorModule],
       providers: [
         {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
         {provide: SecurityService, useValue: sinon.createStubInstance(SecurityService)},
+        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)},
         {provide: ImageService, useValue: sinon.createStubInstance(ImageService)}
       ]
     });
@@ -70,8 +73,8 @@ describe('BlogsComponent', () => {
   });
 
   describe('display blogs', () => {
-    it('should create a blog element for each blog item on the component', () => {
-      expect(nativeElement.querySelectorAll(byDataQa('blog')).length).to.equal(3);
+    it('should create a preview element for each blog item on the component', () => {
+      expect(nativeElement.querySelectorAll(byDataQa('blog-preview')).length).to.equal(3);
     });
   });
 
@@ -120,6 +123,7 @@ describe('BlogsComponent', () => {
 
             beforeEach(() => {
               blog = {
+                id: 'testId',
                 username: 'Tim',
                 createdAt: new Date(2020, 0, 1),
                 title: 'NEW BLOG',
@@ -163,15 +167,18 @@ describe('BlogsComponent', () => {
     return [{
       username: 'Tim',
       createdAt: new Date(2020, 0, 9),
-      body: 'NEW BLOG!'
+      body: 'NEW BLOG!',
+      image: 'url/url'
     }, {
       username: 'Tim',
       createdAt: new Date(2020, 0, 1),
-      body: 'NEW BLOG!'
+      body: 'NEW BLOG!',
+      image: 'url/url'
     }, {
       username: 'Tim',
       createdAt: new Date(2019, 11, 19),
-      body: 'NEW BLOG!'
+      body: 'NEW BLOG!',
+      image: 'url/url'
     }]
   }
 
@@ -179,15 +186,18 @@ describe('BlogsComponent', () => {
     return [{
       username: 'Tim',
       createdAt: "2020-01-01T00:00:00.000Z",
-      body: 'NEW BLOG!'
+      body: 'NEW BLOG!',
+      image: 'url/url'
     }, {
       username: 'Tim',
       createdAt: "2019-12-19T00:00:00.000Z",
-      body: 'NEW BLOG!'
+      body: 'NEW BLOG!',
+      image: 'url/url'
     }, {
       username: 'Tim',
       createdAt: "2020-01-09T00:00:00.000Z",
-      body: 'NEW BLOG!'
+      body: 'NEW BLOG!',
+      image: 'url/url'
     }]
   }
 });

@@ -8,16 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SlideSelectorComponent implements OnInit {
   @Input()
   public items = [];
+  @Input() url;
 
   private itemsPosition = 1;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  public getImage(item) {
-    return item? item.largeThumbnail : undefined;
   }
 
   public scrollForward() {

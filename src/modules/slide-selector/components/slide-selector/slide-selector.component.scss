@@ -3,11 +3,33 @@
     width: 33%;
 }
 
+.arrow {
+    // min-width: 20px;
+    height: 100%;
+    background-color: lightgrey;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.arrow-container {
+    z-index: 1;
+    width: 0;
+
+    opacity: 0;
+}
+
+.arrow-container:hover {
+    opacity: 0.5;
+}
+
+.arrow-container-right {
+    direction: rtl;
+}
+
 .slide-list {
     display: flex;
     list-style-type: none;
-    border: black solid;
-    border-radius: 30px;
+    margin: 0;
 }
 
 .item-large-thumbnail {

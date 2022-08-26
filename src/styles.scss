@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+@import '~@angular/material/theming';
 @import 'scss/typography';
 @import 'scss/buttons';
 @import 'scss/inputs';
@@ -20,6 +21,11 @@ $light-theme: mat.define-light-theme($light-primary, $light-accent, $light-warn)
 
 @include mat.all-component-themes($game-theme);
 
+
+.primary-color-bg {
+    background-color: mat-color(map-get($game-theme, primary));
+}
+
 html, body { height: 100%; }
 body {
     margin: 0;
@@ -31,6 +37,10 @@ body {
 
 .light-robot-theme {
     @include mat.all-component-themes($light-theme);
+
+    .primary-color-bg {
+        background-color: mat-color(map-get($light-theme, primary));
+    }
 }
 
 .hide-eye svg g#eye-stalk {
@@ -40,3 +50,30 @@ body {
 .hide-arm svg g#arm {
     display: none;
 }
+
+// @mixin theme-color-grabber($theme) {
+//     // Parse the theme and create variables for each color in the pallete
+//     $primary: map-get($theme, primary);
+//     $accent: map-get($theme, accent);
+//     $warn: map-get($theme, warn);
+//     // Create theme specfic styles
+//     .primaryColorBG {
+//       background-color: mat-color($primary);
+//     }
+//     .accentColorBG {
+//       background-color: mat-color($accent);
+//     }
+//     .warnColorBG {
+//       background-color: mat-color($warn);
+//     }
+//   }
+
+// @mixin theme($property: null, $key: null) {
+//     & {
+//       #{$property}: mat-color(map_get($game-theme, $key));
+//     }
+  
+//     .light-robot-theme & {
+//       #{$property}: mat-color(map_get($light-theme, $key));
+//     }
+// }
