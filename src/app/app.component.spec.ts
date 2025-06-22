@@ -95,6 +95,18 @@ describe('AppComponent', () => {
       //     expect(location.path()).to.equal('/games')
       //   }));
       // });
+      describe('landing', () => {
+        it('should exist', () => {
+          expect(getElementByDataQa('landing-header-button')).to.exist;
+        });
+
+        it('should navigate to the la ding page', () => {
+          getElementByDataQa('landing-header-button').click();
+          
+          expect(appComponent.navigationService.goto).to.have.been.calledWith('');
+        });
+      })
+
       describe('blog', () => {
         it('should exist', () => {
           expect(getElementByDataQa('blog-header-button')).to.exist;

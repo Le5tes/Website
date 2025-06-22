@@ -1,6 +1,9 @@
 <div class="mat-app-background full-page" [class]="theme">
   <mat-toolbar data-qa="main-menu" color="primary">
-    <mat-icon class="robot-icon" [class]="iconOptions" svgIcon="robot" [inline]="true"></mat-icon>
+    <button class="header-button" data-qa="landing-header-button" (click)="navigateTo('')">
+      <mat-icon class="robot-icon" [class]="iconOptions" svgIcon="robot" [inline]="true"></mat-icon>
+
+    </button>
     <div data-qa="title" class="title">
       Welcome to {{ title }}!
     </div>
