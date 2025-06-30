@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-@import '~@angular/material/theming';
+// @use '~@angular/material/theming';
 @import 'scss/typography';
 @import 'scss/buttons';
 @import 'scss/inputs';
@@ -31,10 +31,6 @@ $light-theme: mat.define-light-theme($light-primary, $light-accent, $light-warn)
 @include mat.all-legacy-component-themes($game-theme);
 
 
-.primary-color-bg {
-    background-color: mat-color(map-get($game-theme, primary));
-}
-
 html, body { height: 100%; }
 body {
     margin: 0;
@@ -46,10 +42,6 @@ body {
 
 .light-robot-theme {
     @include mat.all-legacy-component-themes($light-theme);
-
-    .primary-color-bg {
-        background-color: mat-color(map-get($light-theme, primary));
-    }
 }
 
 .hide-eye svg g#eye-stalk {
