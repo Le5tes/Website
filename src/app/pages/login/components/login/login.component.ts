@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { SecurityService } from 'src/app/services/security/security.service';
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public securityService: SecurityService, 
     public navigationService: NavigationService,
-    private fb: FormBuilder) { }
+    private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.securityService.getCurrentUser().subscribe((value) => {

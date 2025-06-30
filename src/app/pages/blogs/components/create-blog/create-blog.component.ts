@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Blog } from '../../models/blog.model';
 
 @Component({
@@ -10,9 +10,9 @@ import { Blog } from '../../models/blog.model';
 export class CreateBlogComponent implements OnInit {
   @Output() createBlog = new EventEmitter();
   @Output() closeComponent = new EventEmitter<boolean>();
-  form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
