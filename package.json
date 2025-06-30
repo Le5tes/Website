@@ -24,7 +24,7 @@
     "@angular/router": "^15.2.10",
     "core-js": "^2.5.4",
     "karma-mocha": "^2.0.1",
-    "ngx-markdown": "^14.0.1",
+    "ngx-markdown": "^15.1.2",
     "rxjs": "~6.6.3",
     "safe-pipe": "^2.0.5",
     "tslib": "^2.0.0",
