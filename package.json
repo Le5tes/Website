@@ -24,9 +24,9 @@
     "@angular/router": "^14.3.0",
     "core-js": "^2.5.4",
     "karma-mocha": "^2.0.1",
-    "ngx-markdown": "^13.1.0",
+    "ngx-markdown": "^14.0.1",
     "rxjs": "~6.6.3",
-    "safe-pipe": "^2.0.2",
+    "safe-pipe": "^2.0.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.5"
   },
@@ -53,6 +53,6 @@
     "sinon-chai": "^3.5.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.6.4"
+    "typescript": "~4.9.5"
   }
 }
