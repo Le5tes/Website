@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import * as chai from 'chai';
-import * as sinonChai from 'sinon-chai';
+import { beforeEach, describe, it, expect } from 'vitest';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { BlogsService } from './blogs.service';
@@ -10,12 +9,6 @@ describe('BlogService', () => {
   let service: BlogsService;
   let httpTestingController: HttpTestingController;
 
-  let expect;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({ 

@@ -1,20 +1,13 @@
 import { HttpRequest } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import * as chai from 'chai';
-import * as sinonChai from 'sinon-chai';
+import { beforeEach, describe, it, expect } from 'vitest';
 
 import { ImageService } from './image.service';
 
 describe('ImageService', () => {
-  let expect;
   let service: ImageService;
   let httpTestingController: HttpTestingController;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({

@@ -3,9 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
     "types": [
-      "mocha",
       "node", 
-      "chai"
     ]
   },
   "files": [

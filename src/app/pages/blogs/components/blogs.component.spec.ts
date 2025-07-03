@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as chai from 'chai';
-import * as sinon from 'sinon';
-import * as sinonChai from 'sinon-chai';
+import { beforeEach, describe, it, expect, vi, Mock } from 'vitest';
 import { byDataQa } from '../../../../test-utils/test-helpers';
 
 import { BlogsComponent } from './blogs.component';
@@ -20,27 +18,23 @@ import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.m
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 
 describe('BlogsComponent', () => {
-  let expect;
   let component: BlogsComponent;
   let fixture: ComponentFixture<BlogsComponent>;
   let nativeElement;
   let stubGetBlogs;
   let stubCurrentUser;
+  const context = describe
 
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent, ImagePipe ],
       imports: [MarkdownModule.forRoot(), ReactiveFormsModule, SlideSelectorModule],
       providers: [
-        {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
-        {provide: SecurityService, useValue: sinon.createStubInstance(SecurityService)},
-        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)},
-        {provide: ImageService, useValue: sinon.createStubInstance(ImageService)}
+        {provide: BlogsService, useValue: {getBlogs: vi.fn(() => of(getDisorderedBlogs())), postBlog: vi.fn(() => of())}},
+        {provide: SecurityService, useValue: {getCurrentUser: vi.fn(() => of(null))}},
+        {provide: NavigationService, useValue: {}},
+        {provide: ImageService, useValue: {}}
       ]
     });
   }));
@@ -49,12 +43,9 @@ describe('BlogsComponent', () => {
     fixture = TestBed.createComponent(BlogsComponent);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement;
-    stubGetBlogs = component.blogsService.getBlogs as sinon.SinonStub;
-    stubGetBlogs.returns(of(getDisorderedBlogs()));
-    (component.blogsService.postBlog as sinon.SinonStub).returns(of());
+    stubGetBlogs = component.blogsService.getBlogs as Mock;
 
-    stubCurrentUser = component.securityService.getCurrentUser as sinon.SinonStub;
-    stubCurrentUser.returns(of(null));
+    stubCurrentUser = component.securityService.getCurrentUser as Mock;
     fixture.detectChanges();
   });
 

@@ -1,9 +1,6 @@
 import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import * as chai from 'chai'; 
-import * as sinon from 'sinon';
-import * as sinonChai from 'sinon-chai';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { byDataQa } from '../test-utils/test-helpers';
 import { GamesModule } from './pages/games/games.module';
@@ -24,16 +21,13 @@ describe('AppComponent', () => {
   let appComponent: AppComponent;
   let expect;
 
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
-
   beforeEach(waitForAsync(() => {
-    const stubBlogs = sinon.createStubInstance(BlogsService);
-    stubBlogs.getBlogs.returns(of(getBlogs()));
-    const stubSecurity = sinon.createStubInstance(SecurityService);
-    stubSecurity.getCurrentUser.returns(of(null));
+    const stubBlogs = {
+      getBlogs: vi.fn().mockReturnValue(of(getBlogs()))
+    };
+    const stubSecurity = {
+      getCurrentUser: vi.fn().mockReturnValue(of(null))
+    };
 
     TestBed.configureTestingModule({
       imports: [
@@ -52,7 +46,7 @@ describe('AppComponent', () => {
       providers: [
         {provide: BlogsService, useValue: stubBlogs},
         {provide: SecurityService, useValue: stubSecurity},
-        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+        {provide: NavigationService, useValue: { goto: vi.fn() }}
       ]
     }).compileComponents();
   }));

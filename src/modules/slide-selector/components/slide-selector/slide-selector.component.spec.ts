@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { expect } from 'chai';
-import * as sinon from 'sinon';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { SlideSelectorComponent } from './slide-selector.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
@@ -12,12 +11,18 @@ describe('SlideSelectorComponent', () => {
   let component: SlideSelectorComponent;
   let fixture: ComponentFixture<SlideSelectorComponent>;
   let nativeElement: HTMLElement;
+  let mockNavigationService;
+  const context = describe
 
   beforeEach(waitForAsync(() => {
+    mockNavigationService = {
+      goto: vi.fn()
+    };
+
     TestBed.configureTestingModule({
       declarations: [SlideSelectorComponent, PreviewComponent, ImagePipe],
       providers: [
-        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+        {provide: NavigationService, useValue: mockNavigationService}
       ]
     })
       .compileComponents();

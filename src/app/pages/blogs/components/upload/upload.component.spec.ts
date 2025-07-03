@@ -1,28 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import  * as chai from 'chai';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { NEVER, of, scheduled } from 'rxjs';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { ImageService } from '../../services/image.service';
 
 import { UploadComponent } from './upload.component';
 
 describe('UploadComponent', () => {
-  let expect;
   let component: UploadComponent;
   let fixture: ComponentFixture<UploadComponent>;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
+  let mockImageService;
 
   beforeEach(async () => {
+    mockImageService = {
+      upload: vi.fn()
+    };
+
     await TestBed.configureTestingModule({
       declarations: [ UploadComponent ],
       providers: [
-        {provide: ImageService, useValue: sinon.createStubInstance(ImageService)}]
+        {provide: ImageService, useValue: mockImageService}]
     })
     .compileComponents();
   });
@@ -39,7 +36,7 @@ describe('UploadComponent', () => {
 
   describe('file input', () => {
     beforeEach(() => {
-      (component.service.upload as sinon.SinonStub).returns(of(true))
+      mockImageService.upload.mockReturnValue(of(true));
     });
 
     it('should exist', () => {
@@ -59,11 +56,11 @@ describe('UploadComponent', () => {
 
       component.fileChanged(fileEvent);
 
-      expect(component.service.upload).to.have.been.calledWith(file);
+      expect(mockImageService.upload).toHaveBeenCalledWith(file);
     });
 
     it('should show the filename in a list with the pending icon while it is uploading', () => {
-      (component.service.upload as sinon.SinonStub).returns(NEVER)
+      mockImageService.upload.mockReturnValue(NEVER);
 
       const file = new File([''], 'filename.jpeg', { type: 'image/jpeg' });
 
@@ -84,7 +81,7 @@ describe('UploadComponent', () => {
 
 
     it('should show the filename in a list with the success icon while it is uploaded', () => {
-      (component.service.upload as sinon.SinonStub).returns(of('Success'))
+      mockImageService.upload.mockReturnValue(of('Success'));
 
       const file = new File([''], 'filename.jpeg', { type: 'image/jpeg' });
 

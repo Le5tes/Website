@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { expect } from 'chai';
+import { beforeEach, describe, it, expect } from 'vitest';
 
 import { GamesService } from './games.service';
 

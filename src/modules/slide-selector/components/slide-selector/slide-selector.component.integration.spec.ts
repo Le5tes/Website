@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { expect } from 'chai';
-import * as sinon from 'sinon';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { SlideSelectorComponent } from './slide-selector.component';
 import { Component, ViewChild } from '@angular/core';
@@ -19,12 +18,18 @@ class WrapperComponent {
 }
 
 describe('slide-selector-component integration', () => {
-let fixture: ComponentFixture<WrapperComponent>;
-let wrapper: WrapperComponent; 
-let component: SlideSelectorComponent; 
-let nativeElement: HTMLElement;
+  let fixture: ComponentFixture<WrapperComponent>;
+  let wrapper: WrapperComponent; 
+  let component: SlideSelectorComponent; 
+  let nativeElement: HTMLElement;
+  let mockNavigationService;
+  const context = describe
 
-beforeEach(waitForAsync(() => {
+  beforeEach(waitForAsync(() => {
+    mockNavigationService = {
+      goto: vi.fn()
+    };
+
     TestBed.configureTestingModule({
       declarations: [ 
         SlideSelectorComponent,
@@ -33,7 +38,7 @@ beforeEach(waitForAsync(() => {
         ImagePipe
       ],
       providers: [
-        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+        {provide: NavigationService, useValue: mockNavigationService}
       ]
     })
     .compileComponents();

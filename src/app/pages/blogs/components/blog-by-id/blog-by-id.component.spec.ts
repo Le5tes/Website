@@ -1,8 +1,6 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import * as chai from 'chai';
-import * as sinon from 'sinon';
-import * as sinonChai from 'sinon-chai';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { of } from 'rxjs';
 import { BlogsService } from '../../services/blogs.service';
 
@@ -11,24 +9,22 @@ import { BlogComponent } from '../blog/blog.component';
 import { ImagePipe } from '../../pipes/image.pipe';
 
 describe('BlogByIdComponent', () => {
-  let expect;
   let component: BlogByIdComponent;
   let fixture: ComponentFixture<BlogByIdComponent>;
   let mockRoute;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  })
+  let mockBlogsService;
 
   beforeEach(async () => {
     mockRoute = {params: of({blogId: 'testId'})};
+    mockBlogsService = {
+      getBlogById: vi.fn().mockReturnValue(of({}))
+    };
 
 
     await TestBed.configureTestingModule({
       declarations: [ BlogByIdComponent, BlogComponent, ImagePipe ],
       providers: [
-        {provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},
+        {provide: BlogsService, useValue: mockBlogsService},
         {provide: ActivatedRoute, useValue: mockRoute}
       ]
     })
@@ -38,7 +34,6 @@ describe('BlogByIdComponent', () => {
   beforeEach(fakeAsync(() => {
     fixture = TestBed.createComponent(BlogByIdComponent);
     component = fixture.componentInstance;
-    (component.blogsService.getBlogById as sinon.Stub).returns(of({}));
 
     fixture.detectChanges();
     tick();
@@ -50,6 +45,6 @@ describe('BlogByIdComponent', () => {
   });
 
   it('should make a call to get the blog by id based on the route param', () => {
-    expect(component.blogsService.getBlogById).to.have.been.calledWith('testId');
+    expect(mockBlogsService.getBlogById).toHaveBeenCalledWith('testId');
   });
 });

@@ -1,10 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import * as chai from 'chai';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { of, throwError } from 'rxjs';
-import * as sinon from 'sinon';
-import * as sinonChai from 'sinon-chai';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { SecurityService } from 'src/app/services/security/security.service';
 import { byDataQa } from 'src/test-utils/test-helpers';
@@ -14,20 +12,24 @@ import { LoginComponent } from './login.component';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let expect;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
+  let mockSecurityService;
+  let mockNavigationService;
 
   beforeEach(async () => {
+    mockSecurityService = {
+      getCurrentUser: vi.fn(),
+      login: vi.fn()
+    };
+    mockNavigationService = {
+      goto: vi.fn()
+    };
+
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       imports: [ReactiveFormsModule],
       providers: [
-        {provide: SecurityService, useValue: sinon.createStubInstance(SecurityService)},
-        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+        {provide: SecurityService, useValue: mockSecurityService},
+        {provide: NavigationService, useValue: mockNavigationService}
       ]
     })
     .compileComponents();
@@ -43,15 +45,15 @@ describe('LoginComponent', () => {
   });
 
   it('should redirect if use already logged in', () => {
-    (component.securityService.getCurrentUser as sinon.SinonStub).returns(of({user: 'Tim'}))
+    mockSecurityService.getCurrentUser.mockReturnValue(of({user: 'Tim'}));
     fixture.detectChanges();
 
-    expect(component.navigationService.goto).to.have.been.calledWith('');
+    expect(mockNavigationService.goto).toHaveBeenCalledWith('');
   });
 
   describe('if not already logged in', () => {
     beforeEach(() => {
-      (component.securityService.getCurrentUser as sinon.SinonStub).returns(of(null))
+      mockSecurityService.getCurrentUser.mockReturnValue(of(null));
       fixture.detectChanges();
     });
 
@@ -67,7 +69,7 @@ describe('LoginComponent', () => {
     
     describe('login button', () => {
       beforeEach(() => {
-        (component.securityService.login as sinon.SinonStub).returns(of(true));
+        mockSecurityService.login.mockReturnValue(of(true));
       });
 
       it('should exist', () => {
@@ -80,7 +82,7 @@ describe('LoginComponent', () => {
 
         getElementByDataQa('login-button').click();
 
-        expect(component.securityService.login).to.have.been.calledWith('Tim', 'password');
+        expect(mockSecurityService.login).toHaveBeenCalledWith('Tim', 'password');
       });
 
       it('should not show error messages by default', () => {
@@ -90,15 +92,15 @@ describe('LoginComponent', () => {
 
       describe('login resposne', () => {
         it('should navigate to the landing page if the login was successful', () => {
-          (component.securityService.login as sinon.SinonStub).returns(of(true));
+          mockSecurityService.login.mockReturnValue(of(true));
 
           getElementByDataQa('login-button').click();
 
-          expect(component.navigationService.goto).to.have.been.calledWith('');
+          expect(mockNavigationService.goto).toHaveBeenCalledWith('');
         });
 
         it('should show the user/password incorrect message when receiving 401', () => {
-          (component.securityService.login as sinon.SinonStub).returns(throwError(new HttpErrorResponse({status: 401, statusText: 'Unauthorized'})));
+          mockSecurityService.login.mockReturnValue(throwError(new HttpErrorResponse({status: 401, statusText: 'Unauthorized'})));
 
           getElementByDataQa('login-button').click();
           fixture.detectChanges();
@@ -107,7 +109,7 @@ describe('LoginComponent', () => {
         });
         
         it('should show the generic error message when receiving another sort of error', () => {
-          (component.securityService.login as sinon.SinonStub).returns(throwError(new Error()));
+          mockSecurityService.login.mockReturnValue(throwError(new Error()));
 
           getElementByDataQa('login-button').click();
           fixture.detectChanges();

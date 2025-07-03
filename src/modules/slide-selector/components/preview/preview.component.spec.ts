@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import * as chai from 'chai';
-import * as sinon from 'sinon';
-import * as sinonChai from 'sinon-chai';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { NavigationService } from "src/app/services/navigation/navigation.service";
 import { byDataQa } from "src/test-utils/test-helpers";
 import { ImagePipe } from "../../pipes/image.pipe";
@@ -9,21 +7,20 @@ import { ImagePipe } from "../../pipes/image.pipe";
 import { PreviewComponent } from "./preview.component";
 
 describe("PreviewComponent", () => {
-  let expect;
   let component: PreviewComponent;
   let fixture: ComponentFixture<PreviewComponent>;
   let nativeElement;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
+  let mockNavigationService;
 
   beforeEach(async () => {
+    mockNavigationService = {
+      goto: vi.fn()
+    };
+
     await TestBed.configureTestingModule({
       declarations: [PreviewComponent, ImagePipe],
       providers: [
-        {provide: NavigationService, useValue: sinon.createStubInstance(NavigationService)}
+        {provide: NavigationService, useValue: mockNavigationService}
       ]
     }).compileComponents();
   });
@@ -83,7 +80,7 @@ describe("PreviewComponent", () => {
       component.url = 'blogs'
       getElementByDataQa("preview-container").click();
 
-      expect(component.navigationService.goto).to.have.been.calledWith("blogs/testid123")
+      expect(mockNavigationService.goto).toHaveBeenCalledWith("blogs/testid123");
     });
   });
 

@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {expect} from 'chai';
+import { beforeEach, describe, it, expect, vi, Mock } from 'vitest';
 
 import { LandingComponent } from './landing.component';
 import { asNativeElements } from '@angular/core';
-import * as sinon from 'sinon';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 import { BlogsService } from 'src/app/pages/blogs/services/blogs.service';
@@ -19,7 +18,7 @@ describe('LandingComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LandingComponent ],
       imports: [SlideSelectorModule],
-      providers: [{provide: BlogsService, useValue: sinon.createStubInstance(BlogsService)},]
+      providers: [{provide: BlogsService, useValue: {getBlogs: vi.fn()}},]
     })
     .compileComponents();
   }));
@@ -27,7 +26,7 @@ describe('LandingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LandingComponent);
     component = fixture.componentInstance;
-    stubGetBlogs = component.blogsService.getBlogs as sinon.SinonStub;
+    stubGetBlogs = component.blogsService.getBlogs as Mock;
     stubGetBlogs.returns(of([]));
     nativeElement = fixture.nativeElement;
     fixture.detectChanges();

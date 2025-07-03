@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import  * as chai from 'chai';
+import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { MarkdownModule } from 'ngx-markdown';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { ImagePipe } from '../../pipes/image.pipe';
 import { ImageService } from '../../services/image.service';
@@ -14,17 +12,17 @@ import { UploadComponent } from '../upload/upload.component';
 import { CreateBlogComponent } from './create-blog.component';
 
 describe('CreateBlogComponent', () => {
-  let expect;
   let component: CreateBlogComponent;
   let fixture: ComponentFixture<CreateBlogComponent>;
   let nativeElement;
-
-  before(() => {
-    chai.use(sinonChai);
-    expect = chai.expect;
-  });
+  let mockImageService;
+  const context = describe
 
   beforeEach(async () => {
+    mockImageService = {
+      upload: vi.fn()
+    };
+
     await TestBed.configureTestingModule({
       declarations: [CreateBlogComponent, BlogComponent, ImagePipe, UploadComponent],
       imports: [
@@ -32,7 +30,7 @@ describe('CreateBlogComponent', () => {
         MarkdownModule.forRoot()
       ],
       providers: [
-        {provide: ImageService, useValue: sinon.createStubInstance(ImageService)}
+        {provide: ImageService, useValue: mockImageService}
       ]
     })
       .compileComponents();
@@ -107,19 +105,19 @@ describe('CreateBlogComponent', () => {
 
     context('when clicked', () => {
       it('should emit the blog post', () => {
-        const stubEmit = sinon.stub(component.createBlog, 'emit');
+        const stubEmit = vi.spyOn(component.createBlog, 'emit');
 
         createBlogButton.click();
 
-        expect(stubEmit).to.have.been.calledWith(component.form.value);
+        expect(stubEmit).toHaveBeenCalledWith(component.form.value);
       });
 
       it('should emit to close', () => {
-        const stubEmit = sinon.stub(component.closeComponent, 'emit');
+        const stubEmit = vi.spyOn(component.closeComponent, 'emit');
 
         createBlogButton.click();
 
-        expect(stubEmit).to.have.been.calledWith(true);
+        expect(stubEmit).toHaveBeenCalledWith(true);
       });
     });
   });
@@ -135,11 +133,11 @@ describe('CreateBlogComponent', () => {
     });
 
     it('should emit to close when clicked', () => {
-      const stubEmit = sinon.stub(component.closeComponent, 'emit');
+      const stubEmit = vi.spyOn(component.closeComponent, 'emit');
 
       cancelButton.click();
 
-      expect(stubEmit).to.have.been.calledWith(true);
+      expect(stubEmit).toHaveBeenCalledWith(true);
     });
   });
 });
