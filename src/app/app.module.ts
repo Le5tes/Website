@@ -11,15 +11,16 @@ import { GamesModule } from './pages/games/games.module';
 import { AboutModule } from './pages/about/about.module';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 import { BlogsModule } from './pages/blogs/blogs.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './pages/login/login.module';
 import { ProjectsModule } from './pages/projects/projects.module';
 
-@NgModule({
+@NgModule({ 
   declarations: [
     AppComponent
   ],
+  bootstrap: [AppComponent],
   imports: [
     BlogsModule,
     BrowserModule,
@@ -27,16 +28,14 @@ import { ProjectsModule } from './pages/projects/projects.module';
     AppRoutingModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatIconModule, 
+    MatIconModule,
     LandingModule,
     GamesModule,
     LoginModule,
     ProjectsModule,
     SlideSelectorModule,
-    AboutModule,
-    HttpClientModule
+    AboutModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class AppModule { }

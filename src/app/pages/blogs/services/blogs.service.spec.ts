@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, it, expect } from 'vitest';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { BlogsService } from './blogs.service';
-import { HttpRequest } from '@angular/common/http';
+import { HttpRequest, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('BlogService', () => {
   let service: BlogsService;
@@ -11,9 +11,10 @@ describe('BlogService', () => {
 
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ 
-      imports: [HttpClientTestingModule],
-    });
+    TestBed.configureTestingModule({
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     service = TestBed.inject(BlogsService);
     httpTestingController = TestBed.inject(HttpTestingController);
     service.getBlogsUrl = 'url';
