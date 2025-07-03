@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Pipe({
-  name: 'resolveImages'
+  name: 'resolveImages',
+  standalone: false
 })
 export class ImagePipe implements PipeTransform {
   environment = environment;

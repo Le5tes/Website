@@ -5,7 +5,8 @@ import { Blog } from '../../models/blog.model';
 @Component({
   selector: 'app-create-blog',
   templateUrl: './create-blog.component.html',
-  styleUrls: ['./create-blog.component.scss']
+  styleUrls: ['./create-blog.component.scss'],
+  standalone: false
 })
 export class CreateBlogComponent implements OnInit {
   @Output() createBlog = new EventEmitter();

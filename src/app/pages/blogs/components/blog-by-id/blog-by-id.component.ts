@@ -7,7 +7,8 @@ import { BlogsService } from '../../services/blogs.service';
 @Component({
   selector: 'app-blog-by-id',
   templateUrl: './blog-by-id.component.html',
-  styleUrls: ['./blog-by-id.component.scss']
+  styleUrls: ['./blog-by-id.component.scss'],
+  standalone: false
 })
 export class BlogByIdComponent implements OnInit {
   blog: Blog

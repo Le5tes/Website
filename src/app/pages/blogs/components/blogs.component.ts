@@ -5,7 +5,8 @@ import { BlogsService } from '../services/blogs.service';
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.scss']
+  styleUrls: ['./blogs.component.scss'],
+  standalone: false
 })
 export class BlogsComponent implements OnInit {
   blogs;

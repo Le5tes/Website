@@ -5,6 +5,7 @@ import { NavigationService } from "src/app/services/navigation/navigation.servic
   selector: "app-preview",
   templateUrl: "./preview.component.html",
   styleUrls: ["./preview.component.scss"],
+  standalone: false
 })
 export class PreviewComponent implements OnInit {
   @Input() item;

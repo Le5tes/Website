@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-slide-selector',
   templateUrl: './slide-selector.component.html',
-  styleUrls: ['./slide-selector.component.scss']
+  styleUrls: ['./slide-selector.component.scss'],
+  standalone: false
 })
 export class SlideSelectorComponent implements OnInit {
   @Input()

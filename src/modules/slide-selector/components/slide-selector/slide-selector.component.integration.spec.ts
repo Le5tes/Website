@@ -8,7 +8,8 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
 import { ImagePipe } from '../../pipes/image.pipe';
 
 @Component({
-   template: '<app-slide-selector [items]="items"></app-slide-selector>'
+  template: '<app-slide-selector [items]="items"></app-slide-selector>',
+  standalone: false
 })
 class WrapperComponent {
     @ViewChild(SlideSelectorComponent)
