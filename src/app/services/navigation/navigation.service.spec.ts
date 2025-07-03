@@ -1,5 +1,5 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { beforeEach, describe, it, expect } from 'vitest';
 import { routes } from 'src/app/app-routing.module';
@@ -14,7 +14,7 @@ describe('NavigationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes(routes),
+        RouterModule.forRoot(routes),
       ]
     });
     service = TestBed.inject(NavigationService);
