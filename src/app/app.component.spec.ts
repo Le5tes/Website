@@ -1,6 +1,5 @@
 import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { byDataQa } from '../test-utils/test-helpers';
 import { GamesModule } from './pages/games/games.module';
@@ -19,7 +18,6 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let nativeElement: HTMLElement;
   let appComponent: AppComponent;
-  let expect;
 
   beforeEach(waitForAsync(() => {
     const stubBlogs = {
@@ -97,7 +95,7 @@ describe('AppComponent', () => {
         it('should navigate to the la ding page', () => {
           getElementByDataQa('landing-header-button').click();
           
-          expect(appComponent.navigationService.goto).to.have.been.calledWith('');
+          expect(appComponent.navigationService.goto).toHaveBeenCalledWith('');
         });
       })
 
@@ -109,7 +107,7 @@ describe('AppComponent', () => {
         it('should navigate to the blog page', () => {
           getElementByDataQa('blog-header-button').click();
           
-          expect(appComponent.navigationService.goto).to.have.been.calledWith('blog');
+          expect(appComponent.navigationService.goto).toHaveBeenCalledWith('blog');
         });
       });
 
@@ -121,7 +119,7 @@ describe('AppComponent', () => {
         it('should navigate to the projects page', () => {
           getElementByDataQa('projects-header-button').click();
           
-          expect(appComponent.navigationService.goto).to.have.been.calledWith('projects');
+          expect(appComponent.navigationService.goto).toHaveBeenCalledWith('projects');
         });
       });
 
@@ -133,7 +131,7 @@ describe('AppComponent', () => {
         it('should navigate to the about page', () => {
           getElementByDataQa('about-header-button').click();
           
-          expect(appComponent.navigationService.goto).to.have.been.calledWith('about')
+          expect(appComponent.navigationService.goto).toHaveBeenCalledWith('about')
         });
       });
     });

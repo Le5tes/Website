@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { beforeEach, describe, it, expect, vi, Mock } from 'vitest';
 import { byDataQa } from '../../../../test-utils/test-helpers';
 
 import { BlogsComponent } from './blogs.component';
@@ -55,7 +54,7 @@ describe('BlogsComponent', () => {
 
   context('on init', () => {
     it('should make a call to get the latest blog posts', () => {
-      expect(stubGetBlogs).to.have.been.called;
+      expect(stubGetBlogs).to.toHaveBeenCalled;
     });
     
     it('should order the blogs by date (most recent first)', () => {

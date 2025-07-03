@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { NEVER, of, scheduled } from 'rxjs';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { ImageService } from '../../services/image.service';

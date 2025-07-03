@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SafePipeModule } from 'safe-pipe';
-import { beforeEach, describe, it, expect } from 'vitest';
 
 import { ProjectsComponent } from './projects.component';
 

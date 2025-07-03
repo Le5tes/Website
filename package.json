@@ -5,9 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:run": "vitest run",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -26,16 +24,20 @@
     "@angular/router": "^20.0.6",
     "core-js": "^2.5.4",
     "ngx-markdown": "^20.0.0",
-    "rxjs": "~6.6.3",
+    "rxjs": "^7.8.2",
     "safe-pipe": "^2.0.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
+    "@analogjs/platform": "^1.19.0",
+    "@analogjs/vite-plugin-angular": "^1.19.0",
+    "@analogjs/vitest-angular": "^1.19.0",
     "@angular-devkit/build-angular": "^20.0.5",
     "@angular/cli": "^20.0.5",
     "@angular/compiler-cli": "^20.0.6",
     "@angular/language-service": "^20.0.6",
+    "@nx/vite": "^21.0.0",
     "@types/node": "^20.0.0",
     "@vitest/ui": "^3.2.4",
     "codelyzer": "^6.0.0",
@@ -45,6 +47,8 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "^5.8.3",
+    "vite": "^6.0.0",
+    "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^3.2.4"
   }
 }

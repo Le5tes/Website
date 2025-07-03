@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { beforeEach, describe, it, expect, vi, Mock } from 'vitest';
-
 import { LandingComponent } from './landing.component';
 import { asNativeElements } from '@angular/core';
 import { byDataQa } from 'src/test-utils/test-helpers';
@@ -15,10 +13,11 @@ describe('LandingComponent', () => {
   let stubGetBlogs;
 
   beforeEach(waitForAsync(() => {
+    stubGetBlogs = {getBlogs: vi.fn(() => of([]))}
     TestBed.configureTestingModule({
       declarations: [ LandingComponent ],
       imports: [SlideSelectorModule],
-      providers: [{provide: BlogsService, useValue: {getBlogs: vi.fn()}},]
+      providers: [{provide: BlogsService, useValue: stubGetBlogs}]
     })
     .compileComponents();
   }));
@@ -26,8 +25,6 @@ describe('LandingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LandingComponent);
     component = fixture.componentInstance;
-    stubGetBlogs = component.blogsService.getBlogs as Mock;
-    stubGetBlogs.returns(of([]));
     nativeElement = fixture.nativeElement;
     fixture.detectChanges();
   });

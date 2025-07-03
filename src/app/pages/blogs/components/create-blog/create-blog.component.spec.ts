@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { beforeEach, describe, it, expect, vi } from 'vitest';
 import { MarkdownModule } from 'ngx-markdown';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { ImagePipe } from '../../pipes/image.pipe';

@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { beforeEach, describe, it, expect } from 'vitest';
-
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {

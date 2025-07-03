@@ -1,7 +1,6 @@
 import { HttpRequest, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { beforeEach, describe, it, expect } from 'vitest';
 import { environment } from 'src/environments/environment';
 
 import { SecurityService } from './security.service';
