@@ -1,5 +1,6 @@
 import { ImagePipe } from './image.pipe';
-import { expect } from 'chai';
+import { describe, it, beforeEach, expect } from 'vitest';
+
 
 describe('ImagePipe', () => {
   let pipe;
