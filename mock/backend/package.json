@@ -12,6 +12,6 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@hectorjs/stub-backend": "^1.29.2"
+		"@hectorjs/stub-backend": "^1.47.0"
 	}
 }
