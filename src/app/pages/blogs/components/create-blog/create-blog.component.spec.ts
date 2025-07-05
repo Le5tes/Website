@@ -84,9 +84,10 @@ describe('CreateBlogComponent', () => {
   });
 
   describe('preview', () => {
-    it('should show a blog with the blog post as it\'s being written', () => {
+    it('should show a blog with the blog post as it\'s being written', async () => {
       component.form.controls.body.setValue('my blog!!');
       fixture.detectChanges();
+      await fixture.whenStable()
 
       expect(nativeElement.querySelector(byDataQa('preview')).textContent).to.include('my blog!!');
     });

@@ -35,6 +35,6 @@ export class CreateBlogComponent implements OnInit {
   }
 
   get previewBlog() {
-    return Object.assign({username: "Bob"}, this.form.value as Blog);
+    return {username: "Bob", ...this.form.value} as Blog;
   }
 }

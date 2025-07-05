@@ -13,6 +13,7 @@ import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationService } from './services/navigation/navigation.service';
+import { AppRoutingModule } from './app-routing.module';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -36,7 +37,8 @@ describe('AppComponent', () => {
         BlogsModule,
         LandingModule,
         SlideSelectorModule,
-        AboutModule
+        AboutModule,
+        AppRoutingModule
       ],
       declarations: [
         AppComponent

@@ -81,7 +81,7 @@ describe('BlogsComponent', () => {
 
       context('when logged in', () => {
         beforeEach(waitForAsync(() => {
-          stubCurrentUser.returns(of({user: 'Tim'}));
+          stubCurrentUser.mockImplementation(() => of({user: 'Tim'}));
           component.ngOnInit();
           fixture.detectChanges();
         }));
@@ -126,7 +126,7 @@ describe('BlogsComponent', () => {
             });
 
             it('should call to the blogs service with the blog', () => {
-              expect(component.blogsService.postBlog).to.have.been.calledWith(blog);
+              expect(component.blogsService.postBlog).toHaveBeenCalledWith(blog);
             });
           });
 

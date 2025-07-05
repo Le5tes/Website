@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-// import { describe, it, expect, beforeEach, vi } from 'vitest';
+
 
 import { SlideSelectorComponent } from './slide-selector.component';
 import { Component, ViewChild } from '@angular/core';

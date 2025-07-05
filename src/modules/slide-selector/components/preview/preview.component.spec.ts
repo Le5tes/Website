@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-// import { describe, it, expect, beforeEach, vi } from 'vitest';
+
 import { NavigationService } from "src/app/services/navigation/navigation.service";
 import { byDataQa } from "src/test-utils/test-helpers";
 import { ImagePipe } from "../../pipes/image.pipe";
