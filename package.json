@@ -44,16 +44,12 @@
     "jsdom": "^24.1.0",
     "protractor": "^7.0.0",
     "puppeteer": "^9.1.1",
+    "sass": "1.89.2",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "^5.8.3",
     "vite": "^6.0.0",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^3.2.4"
-  },
-  "overrides": {
-    "sass": "1.89.2",
-    "sass-embedded": "1.89.2",
-    "sass-embedded-linux-x64": "1.89.2"
   }
 }
