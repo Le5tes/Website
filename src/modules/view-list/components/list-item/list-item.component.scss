@@ -1,0 +1,21 @@
+.list-item-container {
+  display: flex;
+  padding-bottom: 3cqi;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.image {
+  flex: initial
+}
+
+.text-container {
+  flex: auto
+}
+
+.spacer {
+  min-width: 2em;
+  flex: initial
+}

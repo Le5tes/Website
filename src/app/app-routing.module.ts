@@ -7,6 +7,7 @@ import { BlogsComponent } from './pages/blogs/components/blogs.component';
 import { LoginComponent } from './pages/login/components/login/login.component';
 import { ProjectsComponent } from './pages/projects/components/projects/projects.component';
 import { BlogByIdComponent } from './pages/blogs/components/blog-by-id/blog-by-id.component';
+import { ProjectComponent } from './pages/projects/components/project/project.component';
 
 export const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {path: 'blog', component: BlogsComponent},
   {path: 'blogs/:blogId', component: BlogByIdComponent},
   {path: 'projects', component: ProjectsComponent},
+  {path: 'projects/:title', component: ProjectComponent},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent}
 ];

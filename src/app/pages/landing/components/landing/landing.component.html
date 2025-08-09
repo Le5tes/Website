@@ -1,9 +1,6 @@
 <div data-qa="landing-page-container" class="content-container">
-    <h2>Blog posts!</h2>
-
-    <h3>My Robot Journey</h3>
-    <app-slide-selector url="/blogs" [items]="blogs" data-qa="robot-slide-selector">
-    </app-slide-selector> 
+    <h2>Recent Projects</h2>
+    <app-view-list [items]="projects"></app-view-list>
 
     <!-- <h2>Latest Games</h2> -->
     <!-- <app-slide-selector [items]="games" data-qa="games-slide-selector"></app-slide-selector> -->

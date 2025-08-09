@@ -1,0 +1,8 @@
+<div class="list-item-container" [class.reverse]="_reverse" data-qa="list-item-container" (click)="onClick()">
+  <div class="text-container" data-qa="text-container">
+    <h2 data-qa="title" class="title">{{ item.title }}</h2>
+    <p data-qa="description" class="description">{{ item.description }}</p>
+  </div>
+  <div class="spacer"></div>
+  <img [src]="item.image" class="image" data-qa="image"/>
+</div>

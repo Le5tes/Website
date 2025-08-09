@@ -1,6 +1,6 @@
 {
   "_get": {
-    "/bloggs?limit=10": [
+    "/blogs?limit=10": [
       {
         "_req": {},
         "_res": {
@@ -40,7 +40,7 @@
         "_description": "Description to be defined"
       }
     ],
-    "/bloggs?tag={tag}": [
+    "/blogs?tag={tag}": [
       {
         "_req": {},
         "_res": {
@@ -68,7 +68,7 @@
         "_description": "Description to be defined"
       }
     ],
-    "/bloggs/123": [{
+    "/blogs/123": [{
       "_req": {},
       "_res": {
         "_body": 
