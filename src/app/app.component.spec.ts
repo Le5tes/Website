@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationService } from './services/navigation/navigation.service';
 import { AppRoutingModule } from './app-routing.module';
+import { ThemingService } from './services/theming/theming.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -46,7 +47,8 @@ describe('AppComponent', () => {
       providers: [
         {provide: BlogsService, useValue: stubBlogs},
         {provide: SecurityService, useValue: stubSecurity},
-        {provide: NavigationService, useValue: { goto: vi.fn() }}
+        {provide: NavigationService, useValue: { goto: vi.fn() }},
+        {provide: ThemingService, useValue: {isLightTheme: true}}
       ]
     }).compileComponents();
   }));

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationService } from './services/navigation/navigation.service';
+import { ThemingService } from './services/theming/theming.service';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +13,17 @@ import { NavigationService } from './services/navigation/navigation.service';
 export class AppComponent {
   title = 'lestes-tech';
   iconOptions: string;
-  lightTheme = true
+  lightTheme: boolean
 
   constructor(
     public navigationService: NavigationService,
+    private themingService: ThemingService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
     this.matIconRegistry.addSvgIcon('robot', this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/robot-blank.svg'));
     this.iconOptions = this.chooseIconOptions();
+    this.lightTheme = themingService.isLightTheme
   }
 
   navigateTo(path) {
