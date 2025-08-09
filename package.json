@@ -50,5 +50,8 @@
     "vite": "^6.0.0",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "sass-embedded": "1.89.2"
   }
 }
