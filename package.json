@@ -52,6 +52,7 @@
     "vitest": "^3.2.4"
   },
   "overrides": {
+    "sass": "1.89.2",
     "sass-embedded": "1.89.2"
   }
 }
