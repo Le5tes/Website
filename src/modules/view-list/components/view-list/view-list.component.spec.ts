@@ -8,7 +8,7 @@ describe('ViewListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ViewListComponent]
+      declarations: [ViewListComponent]
     })
     .compileComponents();
 

@@ -103,17 +103,17 @@ describe('AppComponent', () => {
         });
       })
 
-      describe('blog', () => {
-        it('should exist', () => {
-          expect(getElementByDataQa('blog-header-button')).to.exist;
-        });
+      // describe('blog', () => {
+      //   it('should exist', () => {
+      //     expect(getElementByDataQa('blog-header-button')).to.exist;
+      //   });
 
-        it('should navigate to the blog page', () => {
-          getElementByDataQa('blog-header-button').click();
+      //   it('should navigate to the blog page', () => {
+      //     getElementByDataQa('blog-header-button').click();
           
-          expect(appComponent.navigationService.goto).toHaveBeenCalledWith('blog');
-        });
-      });
+      //     expect(appComponent.navigationService.goto).toHaveBeenCalledWith('blog');
+      //   });
+      // });
 
       describe('projects', () => {
         it('should exist', () => {

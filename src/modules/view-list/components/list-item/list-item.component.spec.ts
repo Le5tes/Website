@@ -32,6 +32,7 @@ describe('ListItemComponent', () => {
       description:
         "I run through how I've started making my own robot with a Raspberry Pi.",
       image: "/image-server/robot-mk1.jpg",
+      url: 'blogs'
     };
     fixture.detectChanges();
   });
@@ -68,7 +69,6 @@ describe('ListItemComponent', () => {
 
   describe("on click", () => {
     it('should navigate to the item\'s page', () => {
-      component.url = 'blogs'
       getElementByDataQa("list-item-container").click();
 
       expect(mockNavigationService.goto).toHaveBeenCalledWith("blogs");

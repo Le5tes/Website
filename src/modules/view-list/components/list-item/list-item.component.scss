@@ -8,7 +8,9 @@
 }
 
 .image {
-  flex: initial
+  flex: initial;
+  min-width: 336px;
+  min-height: 336px;
 }
 
 .text-container {
