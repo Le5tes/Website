@@ -53,6 +53,7 @@
   },
   "overrides": {
     "sass": "1.89.2",
-    "sass-embedded": "1.89.2"
+    "sass-embedded": "1.89.2",
+    "sass-embedded-linux-x64": "1.89.2"
   }
 }
