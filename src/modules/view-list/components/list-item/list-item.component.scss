@@ -7,6 +7,12 @@
   flex-direction: row-reverse;
 }
 
+@media only screen and (max-width: 900px) {
+  .list-item-container {
+    flex-direction: column;
+  }
+}
+
 .image {
   flex: initial;
   min-width: 336px;

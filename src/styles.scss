@@ -34,6 +34,13 @@ body {
     margin: 0 20%;
 }
 
+@media only screen and (max-width: 900px) {
+    .content-container {
+        margin: 0 10%;
+    }
+}
+
+
 .light-robot-theme {
     @include mat.elevation-classes();
     @include mat.app-background();
