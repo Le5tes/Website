@@ -14,7 +14,10 @@ export class MK1ProjectComponent {
   constructor(public blogsService: BlogsService) { }
 
   ngOnInit(): void {
-    this.blogsService.getBlogs().subscribe(items => this.items = items.map((item) => ({...item, image: this.imagePipe.transform(item.image), url: `/blogs/${item.id}`}) ))
+    const blogTolistItem = (item) => ({...item, image: this.imagePipe.transform(item.image), url: `/blogs/${item.id}`})
+
+    this.blogsService.getBlogs()
+    .subscribe(items => this.items = items.map(blogTolistItem).sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
   }
 
 }
