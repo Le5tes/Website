@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-
 import { SlideSelectorComponent } from './slide-selector.component';
 import { Component, ViewChild } from '@angular/core';
 import { PreviewComponent } from '../preview/preview.component';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { ImagePipe } from '../../pipes/image.pipe';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 @Component({
   template: '<app-slide-selector [items]="items"></app-slide-selector>',
@@ -35,8 +33,10 @@ describe('slide-selector-component integration', () => {
       declarations: [ 
         SlideSelectorComponent,
         WrapperComponent,
-        PreviewComponent,
-        ImagePipe
+        PreviewComponent
+      ],
+      imports: [
+        ImagePipeModule
       ],
       providers: [
         {provide: NavigationService, useValue: mockNavigationService}

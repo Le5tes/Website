@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BlogComponent } from './blog.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { MarkdownModule } from 'ngx-markdown';
-import { ImagePipe } from '../../pipes/image.pipe';
 import { Blog } from '../../models/blog.model';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
@@ -13,8 +13,8 @@ describe('BlogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogComponent, ImagePipe ],
-      imports: [MarkdownModule.forRoot()], 
+      declarations: [ BlogComponent ],
+      imports: [MarkdownModule.forRoot(), ImagePipeModule], 
     })
     .compileComponents();
   }));

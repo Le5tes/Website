@@ -2,9 +2,8 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { NavigationService } from "src/app/services/navigation/navigation.service";
 import { byDataQa } from "src/test-utils/test-helpers";
-import { ImagePipe } from "../../pipes/image.pipe";
-
 import { PreviewComponent } from "./preview.component";
+import { ImagePipeModule } from "src/modules/image-pipe/image-pipe.module";
 
 describe("PreviewComponent", () => {
   let component: PreviewComponent;
@@ -18,7 +17,8 @@ describe("PreviewComponent", () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [PreviewComponent, ImagePipe],
+      declarations: [PreviewComponent],
+      imports: [ImagePipeModule],
       providers: [
         {provide: NavigationService, useValue: mockNavigationService}
       ]

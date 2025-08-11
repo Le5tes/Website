@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-
 import { SlideSelectorComponent } from './slide-selector.component';
 import { byDataQa } from 'src/test-utils/test-helpers';
 import { PreviewComponent } from '../preview/preview.component';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
-import { ImagePipe } from '../../pipes/image.pipe';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 describe('SlideSelectorComponent', () => {
   let component: SlideSelectorComponent;
@@ -20,7 +18,8 @@ describe('SlideSelectorComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [SlideSelectorComponent, PreviewComponent, ImagePipe],
+      declarations: [SlideSelectorComponent, PreviewComponent],
+      imports: [ImagePipeModule],
       providers: [
         {provide: NavigationService, useValue: mockNavigationService}
       ]

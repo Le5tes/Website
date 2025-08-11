@@ -10,11 +10,11 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { SecurityService } from 'src/app/services/security/security.service';
 import { Blog } from '../models/blog.model';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ImagePipe } from '../pipes/image.pipe';
 import { UploadComponent } from './upload/upload.component';
 import { ImageService } from '../services/image.service';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 describe('BlogsComponent', () => {
   let component: BlogsComponent;
@@ -27,8 +27,8 @@ describe('BlogsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent, ImagePipe ],
-      imports: [MarkdownModule.forRoot(), ReactiveFormsModule, SlideSelectorModule],
+      declarations: [ BlogsComponent, BlogComponent, CreateBlogComponent, UploadComponent ],
+      imports: [ MarkdownModule.forRoot(), ReactiveFormsModule, SlideSelectorModule, ImagePipeModule ],
       providers: [
         {provide: BlogsService, useValue: {getBlogs: vi.fn(() => of(getDisorderedBlogs())), postBlog: vi.fn(() => of())}},
         {provide: SecurityService, useValue: {getCurrentUser: vi.fn(() => of(null))}},

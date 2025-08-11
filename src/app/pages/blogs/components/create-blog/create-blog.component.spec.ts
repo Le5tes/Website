@@ -3,12 +3,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { byDataQa } from 'src/test-utils/test-helpers';
-import { ImagePipe } from '../../pipes/image.pipe';
 import { ImageService } from '../../services/image.service';
 import { BlogComponent } from '../blog/blog.component';
 import { UploadComponent } from '../upload/upload.component';
 
 import { CreateBlogComponent } from './create-blog.component';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 describe('CreateBlogComponent', () => {
   let component: CreateBlogComponent;
@@ -23,10 +23,11 @@ describe('CreateBlogComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [CreateBlogComponent, BlogComponent, ImagePipe, UploadComponent],
+      declarations: [CreateBlogComponent, BlogComponent, UploadComponent],
       imports: [
         ReactiveFormsModule,
-        MarkdownModule.forRoot()
+        MarkdownModule.forRoot(),
+        ImagePipeModule
       ],
       providers: [
         {provide: ImageService, useValue: mockImageService}

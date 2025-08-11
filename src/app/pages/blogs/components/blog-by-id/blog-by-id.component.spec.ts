@@ -5,7 +5,7 @@ import { BlogsService } from '../../services/blogs.service';
 
 import { BlogByIdComponent } from './blog-by-id.component';
 import { BlogComponent } from '../blog/blog.component';
-import { ImagePipe } from '../../pipes/image.pipe';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 describe('BlogByIdComponent', () => {
   let component: BlogByIdComponent;
@@ -21,7 +21,8 @@ describe('BlogByIdComponent', () => {
 
 
     await TestBed.configureTestingModule({
-      declarations: [ BlogByIdComponent, BlogComponent, ImagePipe ],
+      declarations: [ BlogByIdComponent, BlogComponent ],
+      imports: [ImagePipeModule],
       providers: [
         {provide: BlogsService, useValue: mockBlogsService},
         {provide: ActivatedRoute, useValue: mockRoute}
