@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { mergeMap, Observable } from 'rxjs';
 import { Blog } from '../models/blog.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class BlogsService {
   getBlogsUrl: string;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private securityService: OidcSecurityService) {
     this.getBlogsUrl = environment.blogUrl + '/blogs';
   }
 
@@ -23,6 +24,8 @@ export class BlogsService {
   }
 
   postBlog(blog) {
-    return this.http.post(this.getBlogsUrl, blog, {withCredentials: true});
+    return this.securityService.getAccessToken().pipe(mergeMap(token => 
+      this.http.post(this.getBlogsUrl, blog, {withCredentials: true, headers: {Authorization: 'Bearer ' + token}})
+    ))
   }
 }

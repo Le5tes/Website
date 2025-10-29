@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SecurityService } from 'src/app/services/security/security.service';
+// import { SecurityService } from 'src/app/services/security/security.service';
 import { BlogsService } from '../services/blogs.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-blogs',
@@ -13,10 +14,15 @@ export class BlogsComponent implements OnInit {
   loggedIn;
   creatingBlog = false;
 
-  constructor(public blogsService: BlogsService, public securityService: SecurityService) { }
+  constructor(public blogsService: BlogsService, public securityService: OidcSecurityService) { }
 
   ngOnInit(): void {
-    this.securityService.getCurrentUser().subscribe((loggedIn) => this.loggedIn = loggedIn); 
+    // this.securityService.getCurrentUser().subscribe((loggedIn) => this.loggedIn = loggedIn); 
+    this.securityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken, configId }) => {
+      if (isAuthenticated) {
+        this.loggedIn = userData['preferred_username']
+      }
+    })
     this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs.map((blog) => {
       blog.createdAt = new Date(blog.createdAt);
       return blog;

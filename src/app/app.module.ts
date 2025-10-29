@@ -15,6 +15,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './pages/login/login.module';
 import { ProjectsModule } from './pages/projects/projects.module';
+import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({ 
   declarations: [
@@ -34,7 +35,8 @@ import { ProjectsModule } from './pages/projects/projects.module';
     LoginModule,
     ProjectsModule,
     SlideSelectorModule,
-    AboutModule
+    AboutModule,
+    AuthConfigModule
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())]
 })
