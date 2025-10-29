@@ -7,7 +7,6 @@ import { BlogsService } from '../services/blogs.service';
 import { BlogComponent } from './blog/blog.component';
 import { MarkdownModule, MarkdownService } from 'ngx-markdown';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
-import { SecurityService } from 'src/app/services/security/security.service';
 import { Blog } from '../models/blog.model';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadComponent } from './upload/upload.component';
@@ -15,14 +14,19 @@ import { ImageService } from '../services/image.service';
 import { SlideSelectorModule } from 'src/modules/slide-selector/slide-selector.module';
 import { NavigationService } from 'src/app/services/navigation/navigation.service';
 import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 describe('BlogsComponent', () => {
   let component: BlogsComponent;
   let fixture: ComponentFixture<BlogsComponent>;
   let nativeElement;
   let stubGetBlogs;
-  let stubCurrentUser;
+  let stubCheckAuth;
   const context = describe
+
+  const mockSecurityService = {
+    checkAuth: vi.fn(() => of({}))
+  }
 
 
   beforeEach(waitForAsync(() => {
@@ -31,7 +35,7 @@ describe('BlogsComponent', () => {
       imports: [ MarkdownModule.forRoot(), ReactiveFormsModule, SlideSelectorModule, ImagePipeModule ],
       providers: [
         {provide: BlogsService, useValue: {getBlogs: vi.fn(() => of(getDisorderedBlogs())), postBlog: vi.fn(() => of())}},
-        {provide: SecurityService, useValue: {getCurrentUser: vi.fn(() => of(null))}},
+        {provide: OidcSecurityService, useValue: mockSecurityService},
         {provide: NavigationService, useValue: {}},
         {provide: ImageService, useValue: {}}
       ]
@@ -44,7 +48,7 @@ describe('BlogsComponent', () => {
     nativeElement = fixture.nativeElement;
     stubGetBlogs = component.blogsService.getBlogs as Mock;
 
-    stubCurrentUser = component.securityService.getCurrentUser as Mock;
+    stubCheckAuth = component.securityService.checkAuth as Mock;
     fixture.detectChanges();
   });
 
@@ -81,7 +85,7 @@ describe('BlogsComponent', () => {
 
       context('when logged in', () => {
         beforeEach(waitForAsync(() => {
-          stubCurrentUser.mockImplementation(() => of({user: 'Tim'}));
+          stubCheckAuth.mockImplementation(() => of({isAuthenticated: true, userData: {preferred_username: 'Tim'}}));
           component.ngOnInit();
           fixture.detectChanges();
         }));

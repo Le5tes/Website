@@ -3,16 +3,25 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 
 import { BlogsService } from './blogs.service';
 import { HttpRequest, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { of } from 'rxjs';
 
 describe('BlogService', () => {
   let service: BlogsService;
   let httpTestingController: HttpTestingController;
 
+  const mockSecurityService = {
+    getAccessToken: vi.fn(() => of("Token123"))
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
     imports: [],
-    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    providers: [
+      provideHttpClient(withInterceptorsFromDi()), 
+      provideHttpClientTesting(),
+      {provide: OidcSecurityService, useValue: mockSecurityService},
+    ]
 });
     service = TestBed.inject(BlogsService);
     httpTestingController = TestBed.inject(HttpTestingController);
