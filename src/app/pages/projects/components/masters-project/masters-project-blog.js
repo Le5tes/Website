@@ -3,7 +3,7 @@ export const mastersBlogPost = `
 
 It's been a little while since my last blog post. I've been pretty busy, buying a house and doing lots of work on it, and also working on my Master's degree, which I finished last November, as well as my day-to-day job, and doing lots of martial arts. So my poor little robot has just been sitting in a corner looking sad.
 
-![](/image-server/robot_languishing.JPG)
+![](/image-server/robot_languishing.jpg)
 
 But of course my journey into robotics hasn't stayed still - my Master's degree project was in robotics.
 (For the full writeup see [here](/image-server/DissertationCombined.pdf).)
