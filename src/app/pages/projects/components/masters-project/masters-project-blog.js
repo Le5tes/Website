@@ -88,7 +88,7 @@ As I mentioned above, for my project I wanted to make a robot that was able to w
 ### My training setup
 For my project I didn't have a real-life legged robot. I possibly could have built one, but that's a huge project in itself! So instead I ran my code in a simulated robot environment. The robot I used was a simple "toy" robot that's often used in reinforcement learning. It's called "Ant" and looks like this:
 
-[](/image-server/ant-robot.png)
+![](/image-server/ant-robot.png)
 
 This is obviously not modelled on any real robot and has simple geometry. It's an eight Degree of Freedom (DOF) robot, with four legs, each of which has a hip joint, which is only capable of moving the thigh from side to side but not up and down, and a knee joint that can flex and extend. 
 
@@ -102,11 +102,11 @@ With mujoco I could run hundreds of thousands of iterations no problem. If I'd r
 
 The environment I set up to train my robot looked like this:
 
-[](/image-server/0.25.png)
+![](/image-server/0.25.png)
 
 The robot had to learn to get from the blue pillar to the yellow one, and the pillar's positions were different each time. My training regime also increased the difficulty of the task as the robot controller improved; at the start, the two pillars were almost next to each other, on flat ground, whereas later they were much further apart, and the ground was increasingly bumpy and sometimes contained other obstacles.
 
-[](/image-server/Terrain%20Types.png)
+![](/image-server/Terrain%20Types.png)
 
 ### My algorithm
 To train my robot I used the Curious Hierarchical Actor Critic algorithm. I adapted the code from the original paper (the code is open source and available on [github](https://github.com/knowledgetechnologyuhh/goal_conditioned_RL_baselines)). This algorithm uses a type of actor critic method called DDPG (Deep Determinisitic Policy Gradient) (see [Open AI's spinning up](https://spinningup.openai.com/en/latest/algorithms/ddpg.html) for more details), built in hierarchies with "universal" policies. It also suppliments this with curiosity, built in the same way as was used by <> to solve Montezuma's Revenge, so the original implementation was already using two of the three methods for improving learning that I mentioned. It even had, as one of the test environments, a similar environemt with the Ant robot attempting to reach a goal, but on flat ground. However the authors didn't attempt to incorportate curriculum learning or more challenging terrain, so I wanted to see how it would fare with my environemt and training regime.
