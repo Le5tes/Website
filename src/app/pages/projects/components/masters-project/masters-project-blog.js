@@ -114,7 +114,7 @@ To train my robot I used the Curious Hierarchical Actor Critic algorithm. I adap
 ### My results
 Here's a video of the robot after being trained for 200,000 episodes.
 
-<video controls width=500>
+<video controls width=100%>
   <source src="/image-server/masters_blog_video.mp4" type="video/mp4">
 </video>
 
