@@ -8,6 +8,7 @@ import { SudokuSolverComponent } from './components/sudoku-solver/sudoku-solver.
 import { GravitySimulatorComponent } from './components/gravity-simulator/gravity-simulator.component';
 import { MastersProjectComponent } from './components/masters-project/masters-project.component';
 import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
     CommonModule,
     SafePipeModule,
     ViewListModule,
+    MarkdownModule.forRoot(),
     ImagePipeModule
   ]
 })

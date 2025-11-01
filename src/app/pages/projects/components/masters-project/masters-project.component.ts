@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {mastersBlogPost} from './masters-project-blog.js'
 
 @Component({
   selector: 'app-masters-project',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class MastersProjectComponent {
-
+  mastersBlog = mastersBlogPost
 }
