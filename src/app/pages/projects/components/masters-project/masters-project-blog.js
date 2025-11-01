@@ -106,7 +106,7 @@ The environment I set up to train my robot looked like this:
 
 The robot had to learn to get from the blue pillar to the yellow one, and the pillar's positions were different each time. My training regime also increased the difficulty of the task as the robot controller improved; at the start, the two pillars were almost next to each other, on flat ground, whereas later they were much further apart, and the ground was increasingly bumpy and sometimes contained other obstacles.
 
-![](/image-server/Terrain%20Types.png)
+![](/image-server/Terrain_Types.png)
 
 ### My algorithm
 To train my robot I used the Curious Hierarchical Actor Critic algorithm. I adapted the code from the original paper (the code is open source and available on [github](https://github.com/knowledgetechnologyuhh/goal_conditioned_RL_baselines)). This algorithm uses a type of actor critic method called DDPG (Deep Determinisitic Policy Gradient) (see [Open AI's spinning up](https://spinningup.openai.com/en/latest/algorithms/ddpg.html) for more details), built in hierarchies with "universal" policies. It also suppliments this with curiosity, built in the same way as was used by <> to solve Montezuma's Revenge, so the original implementation was already using two of the three methods for improving learning that I mentioned. It even had, as one of the test environments, a similar environemt with the Ant robot attempting to reach a goal, but on flat ground. However the authors didn't attempt to incorportate curriculum learning or more challenging terrain, so I wanted to see how it would fare with my environemt and training regime.
