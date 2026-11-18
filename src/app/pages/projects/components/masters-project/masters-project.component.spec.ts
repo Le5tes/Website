@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MastersProjectComponent } from './masters-project.component';
+import { ImagePipeModule } from 'src/modules/image-pipe/image-pipe.module';
 
 describe('MastersProjectComponent', () => {
   let component: MastersProjectComponent;
@@ -8,7 +9,8 @@ describe('MastersProjectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MastersProjectComponent]
+      declarations: [MastersProjectComponent],
+      imports: [ImagePipeModule]
     })
     .compileComponents();
 

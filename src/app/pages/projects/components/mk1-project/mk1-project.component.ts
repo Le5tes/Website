@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BlogsService } from 'src/app/pages/blogs/services/blogs.service';
 import { ImagePipe } from 'src/modules/image-pipe/pipes/image.pipe';
+import { ImagePrefetchService } from 'src/app/pages/blogs/services/image-prefetch.service';
 
 @Component({
   selector: 'app-mk1-project',
@@ -9,15 +10,17 @@ import { ImagePipe } from 'src/modules/image-pipe/pipes/image.pipe';
   standalone: false
 })
 export class MK1ProjectComponent {
-  items
-  imagePipe = new ImagePipe()
-  constructor(public blogsService: BlogsService) { }
+  items;
+  imagePipe = new ImagePipe();
+  constructor(public blogsService: BlogsService ,private imagePrefetchService: ImagePrefetchService) {}
 
   ngOnInit(): void {
-    const blogTolistItem = (item) => ({...item, image: this.imagePipe.transform(item.image), url: `/blogs/${item.id}`})
+    const blogTolistItem = (item) => ({...item, image: this.imagePipe.transform(item.image), url: `/blogs/${item.id}`});
 
     this.blogsService.getBlogs()
-    .subscribe(items => this.items = items.map(blogTolistItem).sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()))
+    .subscribe(items => {
+      this.items = items.map(blogTolistItem).sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+      this.imagePrefetchService.prefetchBlogs(items);
+    })
   }
-
 }

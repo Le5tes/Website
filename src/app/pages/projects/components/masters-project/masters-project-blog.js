@@ -12,7 +12,7 @@ So what did I do?
 
 Well actually I guess the first question is what was I trying to do, and why?
 
-## What I was trying to Achieve
+## What I was trying to achieve
 Up until fairly recently my little foray into the world of robotics has been using a simple tracked robot. It's cute and it works well on carpet, but a little robot with only two motors and tracks has some limitations. For a long time I've been wanting to work with legged robots. Not only do they look way cooler(!), but they have great advantages over wheeled and tracked robots when it comes to navigating all sorts of different environments. My little tracked robot can't handle stairs or even bumps larger than a certain size. It can't jump over gaps, or traverse a narrow path. I certainly wouldn't let it go in long grass, since the motors would get full of grass blades, and it's never going to be able to climb through a hedge or up a chain link fence! In fact I'm not sure it'd even deal very well with gravel or mud. All of these things should be theoretically possible for a legged robot of the same size. In fact I'd expect a legged robot to be able to go wherever I can go!
 
 Of course making a legged robot that's actually able to do any of these things is very hard. 

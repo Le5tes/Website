@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { SecurityService } from 'src/app/services/security/security.service';
 import { BlogsService } from '../services/blogs.service';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { ImagePrefetchService } from '../services/image-prefetch.service';
 
 @Component({
   selector: 'app-blogs',
@@ -14,7 +15,7 @@ export class BlogsComponent implements OnInit {
   loggedIn;
   creatingBlog = false;
 
-  constructor(public blogsService: BlogsService, public securityService: OidcSecurityService) { }
+  constructor(public blogsService: BlogsService, public securityService: OidcSecurityService, private imagePrefetchService: ImagePrefetchService) { }
 
   ngOnInit(): void {
     // this.securityService.getCurrentUser().subscribe((loggedIn) => this.loggedIn = loggedIn); 
@@ -23,10 +24,13 @@ export class BlogsComponent implements OnInit {
         this.loggedIn = userData['preferred_username']
       }
     })
-    this.blogsService.getBlogs().subscribe((blogs) => this.blogs = blogs.map((blog) => {
-      blog.createdAt = new Date(blog.createdAt);
-      return blog;
-    }).sort((a,b) => b.createdAt.getTime() - a.createdAt.getTime()));
+    this.blogsService.getBlogs().subscribe((blogs) => {
+      this.blogs = blogs.map((blog) => {
+        blog.createdAt = new Date(blog.createdAt);
+        return blog;
+      }).sort((a,b) => b.createdAt.getTime() - a.createdAt.getTime());
+      this.imagePrefetchService.prefetchBlogs(this.blogs);
+    });
   }
 
   newBlog() {
