@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   blogUrl: 'http://localhost:3005',
+  imageUrl: 'http://localhost:3005/images',
   projects: {
     sudokuUrl: "https://sudoku.lestes.tech"
   }

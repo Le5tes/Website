@@ -9,6 +9,6 @@ export class ImagePipe implements PipeTransform {
   environment = environment;
 
   transform(value: string): string {
-    return value ? value.replace(/\/image-server\//g, this.environment.blogUrl + '/images/'): null;
+    return value ? value.replace(/\/image-server\//g, this.environment.imageUrl + '/'): null;
   }
 }
