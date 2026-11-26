@@ -85,7 +85,7 @@ describe('BlogsComponent', () => {
 
       context('when logged in', () => {
         beforeEach(waitForAsync(() => {
-          stubCheckAuth.mockImplementation(() => of({isAuthenticated: true, userData: {preferred_username: 'Tim'}}));
+          stubCheckAuth.mockImplementation(() => of({isAuthenticated: true}));
           component.ngOnInit();
           fixture.detectChanges();
         }));

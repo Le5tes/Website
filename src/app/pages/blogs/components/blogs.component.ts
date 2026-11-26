@@ -11,16 +11,14 @@ import { ImagePrefetchService } from '../services/image-prefetch.service';
 })
 export class BlogsComponent implements OnInit {
   blogs;
-  loggedIn;
+  loggedIn = false;
   creatingBlog = false;
 
   constructor(public blogsService: BlogsService, public securityService: OidcSecurityService, private imagePrefetchService: ImagePrefetchService) { }
 
   ngOnInit(): void {
-    this.securityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken, configId }) => {
-      if (isAuthenticated) {
-        this.loggedIn = userData['preferred_username']
-      }
+    this.securityService.checkAuth().subscribe(({ isAuthenticated }) => {
+      this.loggedIn = isAuthenticated;
     })
     this.loadBlogs();
   }
