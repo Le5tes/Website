@@ -7,7 +7,7 @@ import { LandingModule } from './pages/landing/landing.module';
 import { AboutModule } from './pages/about/about.module';
 import { SlideSelectorModule } from '../modules/slide-selector/slide-selector.module';
 import { BlogsService } from './pages/blogs/services/blogs.service';
-import { SecurityService } from './services/security/security.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { BlogsModule } from './pages/blogs/blogs.module';
 import { of } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ describe('AppComponent', () => {
       getBlogs: vi.fn().mockReturnValue(of(getBlogs()))
     };
     const stubSecurity = {
-      getCurrentUser: vi.fn().mockReturnValue(of(null))
+      checkAuth: vi.fn().mockReturnValue(of({isAuthenticated: false}))
     };
 
     TestBed.configureTestingModule({
@@ -46,7 +46,7 @@ describe('AppComponent', () => {
       ],
       providers: [
         {provide: BlogsService, useValue: stubBlogs},
-        {provide: SecurityService, useValue: stubSecurity},
+        {provide: OidcSecurityService, useValue: stubSecurity},
         {provide: NavigationService, useValue: { goto: vi.fn() }},
         {provide: ThemingService, useValue: {isLightTheme: true}}
       ]

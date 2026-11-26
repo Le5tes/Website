@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { NavigationService } from './services/navigation/navigation.service';
 import { ThemingService } from './services/theming/theming.service';
 
@@ -10,7 +11,7 @@ import { ThemingService } from './services/theming/theming.service';
   styleUrls: ['./app.component.scss'],
   standalone: false
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'lestes-tech';
   iconOptions: string;
   lightTheme: boolean
@@ -19,11 +20,22 @@ export class AppComponent {
     public navigationService: NavigationService,
     private themingService: ThemingService,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private securityService: OidcSecurityService
   ) {
     this.matIconRegistry.addSvgIcon('robot', this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/robot-blank.svg'));
     this.iconOptions = this.chooseIconOptions();
     this.lightTheme = themingService.isLightTheme
+  }
+
+  ngOnInit() {
+    // Completes the login redirect from Cognito (the ?code= callback on the origin)
+    const isLoginCallback = window.location.search.includes('code=');
+    this.securityService.checkAuth().subscribe(({ isAuthenticated }) => {
+      if (isAuthenticated && isLoginCallback) {
+        this.navigationService.goto('blog');
+      }
+    });
   }
 
   navigateTo(path) {

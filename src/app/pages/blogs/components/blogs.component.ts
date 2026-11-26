@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { SecurityService } from 'src/app/services/security/security.service';
 import { BlogsService } from '../services/blogs.service';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { ImagePrefetchService } from '../services/image-prefetch.service';
@@ -18,12 +17,15 @@ export class BlogsComponent implements OnInit {
   constructor(public blogsService: BlogsService, public securityService: OidcSecurityService, private imagePrefetchService: ImagePrefetchService) { }
 
   ngOnInit(): void {
-    // this.securityService.getCurrentUser().subscribe((loggedIn) => this.loggedIn = loggedIn); 
     this.securityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken, configId }) => {
       if (isAuthenticated) {
         this.loggedIn = userData['preferred_username']
       }
     })
+    this.loadBlogs();
+  }
+
+  private loadBlogs() {
     this.blogsService.getBlogs().subscribe((blogs) => {
       this.blogs = blogs.map((blog) => {
         blog.createdAt = new Date(blog.createdAt);
@@ -41,7 +43,13 @@ export class BlogsComponent implements OnInit {
     this.creatingBlog = false;
   }
 
+  uploadError = false;
+
   uploadBlog(event) {
-    this.blogsService.postBlog(event).subscribe();
+    this.uploadError = false;
+    this.blogsService.postBlog(event).subscribe({
+      next: () => this.loadBlogs(),
+      error: () => this.uploadError = true
+    });
   }
 }

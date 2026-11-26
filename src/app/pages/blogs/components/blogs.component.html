@@ -2,6 +2,7 @@
     <ng-container *ngIf="!creatingBlog">
         <h1>Recent Blogs</h1>
         <button data-qa="create-blog-button" class="ui-button" *ngIf="loggedIn" (click)="newBlog()">Write new blog</button>
+        <p *ngIf="uploadError" data-qa="upload-error" class="error">Failed to post blog. Please try again.</p>
         <div *ngIf="blogs" data-qa="blogs" class="blogs"> 
             <div *ngFor="let blog of blogs" class="blog">
                 <app-preview data-qa="blog-preview" url="/blogs" [item]="blog"></app-preview>
